@@ -1,35 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensi FF</title>
 
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #111827, #2563eb, #7c3aed);
-    color: white;
-    min-height: 100vh;
-  }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  .container {
-    max-width: 500px;
-    margin: auto;
-    padding: 25px 18px;
-  }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #07152f, #0b4fd3, #4720a8);
+    }
 
-  .card {
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 18px;
-    padding: 20px;
-    margin-top: 18px;
-    backdrop-filter: blur(8px);
-  }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 25px 18px;
+    }
 
-  button {
-    width: 100%;
-    padding: 14px;
-    border: 0;
-    border-radius: 12px;
-    background: #3b82f6;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-  }
-</style>
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: #1683ff;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #resultado {
+      margin-top: 15px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>SENSI FF</h1>
+
+    <div class="card">
+      <label>Celular</label>
+      <select id="celular">
+        <option>Redmi Note 11</option>
+        <option>iPhone 11</option>
+        <option>Samsung</option>
+        <option>Realme</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <label>Modo</label>
+      <select id="modo">
+        <option>Alta</option>
+        <option>Padrão</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <label>Tamanho do botão</label>
+      <input id="botao" type="number" value="50" min="1" max="100">
+    </div>
+
+    <div class="card">
+      <button onclick="gerarSensi()">GERAR SENSI</button>
+      <div id="resultado"></div>
+    </div>
+
+  </div>
+
+  <script>
+    function gerarSensi() {
+      const celular = document.getElementById("celular").value;
+      const modo = document.getElementById("modo").value;
+      const botao = document.getElementById("botao").value;
+
+      let sensi;
+
+      if (modo === "Alta") {
+        sensi = {
+          geral: 200,
+          vermelho: 170,
+          mira2x: 190,
+          mira4x: 170,
+          awm: 20,
+          olhadinha: 100
+        };
+      } else {
+        sensi = {
+          geral: 196,
+          vermelho: 150,
+          mira2x: 182,
+          mira4x: 165,
+          awm: 20,
+          olhadinha: 100
+        };
+      }
+
+      document.getElementById("resultado").innerHTML = `
+        <b>${celular}</b><br>
+        Geral: ${sensi.geral}<br>
+        Ponto Vermelho: ${sensi.vermelho}<br>
+        Mira 2x: ${sensi.mira2x}<br>
+        Mira 4x: ${sensi.mira4x}<br>
+        AWM: ${sensi.awm}<br>
+        Olhadinha: ${sensi.olhadinha}<br>
+        Tamanho do botão: ${botao}
+      `;
+    }
+  </script>
+
+</body>
+</html>
