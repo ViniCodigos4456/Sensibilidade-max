@@ -1,33 +1,132 @@
+HTML
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FF Sensi</title>
+<title>Sensibilidade MAX</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #090909, #171717);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(255,255,255,0.08);
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.subtitulo {
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#resultado {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.sensi {
+  background: #1c1c1c;
+  margin: 10px 0;
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+.nome {
+  color: #aaa;
+}
+
+.valor {
+  font-size: 20px;
+  font-weight: bold;
+}
+</style>
 </head>
+
 <body>
 
-<h1>FF Sensi</h1>
-<p>Gerador de sensibilidade para Free Fire</p>
+<div class="container">
 
-<button onclick="gerarSensi()">Gerar Sensi</button>
+  <h1>Sensibilidade MAX</h1>
 
-<h2 id="resultado"></h2>
+  <p class="subtitulo">
+    Gerador de sensibilidade para Free Fire
+  </p>
+
+  <button onclick="gerarSensi()">
+    GERAR SENSI
+  </button>
+
+  <div id="resultado"></div>
+
+</div>
 
 <script>
 function gerarSensi() {
+
   let geral = Math.floor(Math.random() * 201);
   let redDot = Math.floor(Math.random() * 201);
   let mira2x = Math.floor(Math.random() * 201);
   let mira4x = Math.floor(Math.random() * 201);
+  let awm = Math.floor(Math.random() * 201);
+  let olhadinha = Math.floor(Math.random() * 201);
 
   document.getElementById("resultado").innerHTML =
-    "Geral: " + geral +
-    "<br>Ponto Vermelho: " + redDot +
-    "<br>Mira 2x: " + mira2x +
-    "<br>Mira 4x: " + mira4x;
+
+    '<div class="sensi"><span class="nome">Geral</span><br><span class="valor">' + geral + '</span></div>' +
+
+    '<div class="sensi"><span class="nome">Ponto Vermelho</span><br><span class="valor">' + redDot + '</span></div>' +
+
+    '<div class="sensi"><span class="nome">Mira 2x</span><br><span class="valor">' + mira2x + '</span></div>' +
+
+    '<div class="sensi"><span class="nome">Mira 4x</span><br><span class="valor">' + mira4x + '</span></div>' +
+
+    '<div class="sensi"><span class="nome">AWM</span><br><span class="valor">' + awm + '</span></div>' +
+
+    '<div class="sensi"><span class="nome">Olhadinha</span><br><span class="valor">' + olhadinha + '</span></div>';
 }
 </script>
 
 </body>
-<
+</html
