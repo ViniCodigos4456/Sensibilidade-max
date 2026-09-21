@@ -15,7 +15,13 @@
       font-family: Arial, sans-serif;
       color: white;
       min-height: 100vh;
-      background: linear-gradient(135deg, #07152f, #0b4fd3, #4720a8);
+
+      background:
+        linear-gradient(
+          rgba(7, 21, 47, 0.72),
+          rgba(11, 79, 211, 0.70)
+        ),
+        url("killua.jpg") center/cover fixed no-repeat;
     }
 
     .container {
@@ -27,14 +33,16 @@
     h1 {
       text-align: center;
       margin-bottom: 25px;
+      font-size: 32px;
     }
 
     .card {
-      background: rgba(255,255,255,0.12);
+      background: rgba(0, 0, 0, 0.45);
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 18px;
       padding: 18px;
       margin-bottom: 15px;
+      backdrop-filter: blur(5px);
     }
 
     label {
@@ -62,6 +70,10 @@
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.98);
     }
 
     #resultado {
@@ -132,22 +144,3 @@
           mira2x: 182,
           mira4x: 165,
           awm: 20,
-          olhadinha: 100
-        };
-      }
-
-      document.getElementById("resultado").innerHTML = `
-        <b>${celular}</b><br>
-        Geral: ${sensi.geral}<br>
-        Ponto Vermelho: ${sensi.vermelho}<br>
-        Mira 2x: ${sensi.mira2x}<br>
-        Mira 4x: ${sensi.mira4x}<br>
-        AWM: ${sensi.awm}<br>
-        Olhadinha: ${sensi.olhadinha}<br>
-        Tamanho do botão: ${botao}
-      `;
-    }
-  </script>
-
-</body>
-</html>
