@@ -1,63 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sensibilidade MAX</title>
 
-  text-align: center;
-  color: #aaa;
-  margin-bottom: 25px;
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,sans-serif;
+background:#080808;
+color:white;
+padding:20px;
 }
 
-.caixa {
-  background: #111;
-  border: 1px solid #333;
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 15px;
+.container{
+max-width:430px;
+margin:auto;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-  color: #ccc;
-  font-weight: bold;
+h1{
+text-align:center;
+font-size:32px;
+margin:10px 0 5px;
 }
 
-select,
-input {
-  width: 100%;
-  padding: 13px;
-  border-radius: 10px;
-  border: 1px solid #444;
-  background: #1d1d1d;
-  color: white;
-  font-size: 16px;
-  margin-bottom: 15px;
+.subtitulo{
+text-align:center;
+color:#999;
+margin-bottom:25px;
 }
 
-button {
-  width: 100%;
-  padding: 16px;
-  border: none;
-  border-radius: 12px;
-  background: white;
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
+.caixa{
+background:#121212;
+border:1px solid #333;
+border-radius:16px;
+padding:18px;
+margin-bottom:15px;
 }
 
-#resultado {
-  margin-top: 15px;
+label{
+display:block;
+font-weight:bold;
+margin:12px 0 7px;
 }
 
-.sensi {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 10px;
-  padding: 13px;
-  margin-bottom: 9px;
-  display: flex;
-  justify-content: space-between;
+select,input{
+width:100%;
+padding:13px;
+border-radius:10px;
+border:1px solid #444;
+background:#1d1d1d;
+color:white;
+font-size:16px;
 }
 
-.valor {
-  font-weight: bold;
+button{
+width:100%;
+margin-top:18px;
+padding:16px;
+border:0;
+border-radius:12px;
+background:white;
+color:black;
+font-size:18px;
+font-weight:bold;
+}
+
+.sensi{
+display:flex;
+justify-content:space-between;
+background:#191919;
+border:1px solid #333;
+border-radius:10px;
+padding:14px;
+margin:9px 0;
+}
+
+.valor{
+font-weight:bold;
 }
 </style>
 </head>
@@ -94,11 +118,9 @@ Gerador de sensibilidade para Free Fire
 
 <label>Tamanho do botão</label>
 
-<input type="number" id="botao" value="50" min="1" max="100">
+<input id="botao" type="number" value="50" min="1" max="100">
 
-<button onclick="gerarSensi()">
-GERAR SENSI
-</button>
+<button onclick="gerarSensi()">GERAR SENSI</button>
 
 </div>
 
@@ -107,67 +129,38 @@ GERAR SENSI
 </div>
 
 <script>
+function gerarSensi(){
 
-function gerarSensi() {
+let celular=document.getElementById("celular").value;
+let modo=document.getElementById("modo").value;
+let botao=document.getElementById("botao").value;
 
-let celular = document.getElementById("celular").value;
-let modo = document.getElementById("modo").value;
-let botao = document.getElementById("botao").value;
+let geral=Math.floor(Math.random()*201);
+let vermelho=Math.floor(Math.random()*201);
+let mira2x=Math.floor(Math.random()*201);
+let mira4x=Math.floor(Math.random()*201);
+let awm=Math.floor(Math.random()*201);
+let olhadinha=Math.floor(Math.random()*201);
 
-let geral = Math.floor(Math.random() * 201);
-let vermelho = Math.floor(Math.random() * 201);
-let mira2x = Math.floor(Math.random() * 201);
-let mira4x = Math.floor(Math.random() * 201);
-let awm = Math.floor(Math.random() * 201);
-let olhadinha = Math.floor(Math.random() * 201);
-
-document.getElementById("resultado").innerHTML = `
+document.getElementById("resultado").innerHTML=`
 
 <div class="caixa">
-
-<b>Configuração gerada</b>
-
+<b>Configuração</b>
 <p>Celular: ${celular}</p>
 <p>Modo: ${modo}</p>
 <p>Tamanho do botão: ${botao}</p>
-
 </div>
 
-<div class="sensi">
-<span>Geral</span>
-<span class="valor">${geral}</span>
-</div>
-
-<div class="sensi">
-<span>Ponto Vermelho</span>
-<span class="valor">${vermelho}</span>
-</div>
-
-<div class="sensi">
-<span>Mira 2x</span>
-<span class="valor">${mira2x}</span>
-</div>
-
-<div class="sensi">
-<span>Mira 4x</span>
-<span class="valor">${mira4x}</span>
-</div>
-
-<div class="sensi">
-<span>AWM</span>
-<span class="valor">${awm}</span>
-</div>
-
-<div class="sensi">
-<span>Olhadinha</span>
-<span class="valor">${olhadinha}</span>
-</div>
-
+<div class="sensi"><span>Geral</span><span class="valor">${geral}</span></div>
+<div class="sensi"><span>Ponto Vermelho</span><span class="valor">${vermelho}</span></div>
+<div class="sensi"><span>Mira 2x</span><span class="valor">${mira2x}</span></div>
+<div class="sensi"><span>Mira 4x</span><span class="valor">${mira4x}</span></div>
+<div class="sensi"><span>AWM</span><span class="valor">${awm}</span></div>
+<div class="sensi"><span>Olhadinha</span><span class="valor">${olhadinha}</span></div>
 `;
 
 }
-
 </script>
 
 </body>
-</html
+</html>
