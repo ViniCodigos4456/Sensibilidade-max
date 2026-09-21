@@ -61,6 +61,11 @@ button {
   color: white;
   font-size: 17px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
 }
 
 #resultado {
@@ -77,31 +82,65 @@ button {
 <h1>SENSI FF</h1>
 
 <div class="card">
-<label>Celular</label>
+<label for="celular">Celular</label>
+
 <select id="celular">
-<option>Redmi Note 11</option>
-<option>iPhone 11</option>
-<option>Samsung</option>
-<option>Realme</option>
+  <option>Redmi Note 11</option>
+  <option>Redmi Note 12</option>
+  <option>Redmi Note 13</option>
+  <option>Redmi Note 14</option>
+  <option>Redmi 12</option>
+  <option>Redmi 13</option>
+
+  <option>POCO X3 Pro</option>
+  <option>POCO X5 Pro</option>
+  <option>POCO X6</option>
+
+  <option>Samsung Galaxy A14</option>
+  <option>Samsung Galaxy A15</option>
+  <option>Samsung Galaxy A24</option>
+  <option>Samsung Galaxy A34</option>
+
+  <option>iPhone 11</option>
+  <option>iPhone 12</option>
+  <option>iPhone 13</option>
+  <option>iPhone 14</option>
+  <option>iPhone 15</option>
+
+  <option>Realme</option>
+  <option>Outro celular</option>
 </select>
 </div>
 
 <div class="card">
-<label>Modo</label>
+<label for="modo">Modo</label>
+
 <select id="modo">
-<option>Alta</option>
-<option>Padrão</option>
+  <option>Alta</option>
+  <option>Padrão</option>
 </select>
 </div>
 
 <div class="card">
-<label>Tamanho do botão</label>
-<input id="botao" type="number" value="50" min="1" max="100">
+<label for="botao">Tamanho do botão</label>
+
+<input
+  id="botao"
+  type="number"
+  value="50"
+  min="1"
+  max="100"
+>
 </div>
 
 <div class="card">
-<button type="button" onclick="gerarSensi()">GERAR SENSI</button>
+
+<button type="button" onclick="gerarSensi()">
+GERAR SENSI
+</button>
+
 <div id="resultado"></div>
+
 </div>
 
 </div>
@@ -109,9 +148,9 @@ button {
 <script>
 function gerarSensi() {
 
-  let celular = document.getElementById("celular").value;
-  let modo = document.getElementById("modo").value;
-  let botao = document.getElementById("botao").value;
+  const celular = document.getElementById("celular").value;
+  const modo = document.getElementById("modo").value;
+  const botao = document.getElementById("botao").value;
 
   let sensi;
 
@@ -124,28 +163,7 @@ function gerarSensi() {
       mira4x: 170,
       awm: 20,
       olhadinha: 100
-    };<label for="celular">Escolha seu celular:</label>
-<select id="celular">
-  <option>Redmi Note 11</option>
-  <option>Redmi Note 12</option>
-  <option>Redmi Note 13</option>
-  <option>Redmi Note 14</option>
-  <option>Redmi 12</option>
-  <option>Redmi 13</option>
-  <option>POCO X3 Pro</option>
-  <option>POCO X5 Pro</option>
-  <option>POCO X6</option>
-  <option>Samsung Galaxy A14</option>
-  <option>Samsung Galaxy A15</option>
-  <option>Samsung Galaxy A24</option>
-  <option>Samsung Galaxy A34</option>
-  <option>iPhone 11</option>
-  <option>iPhone 12</option>
-  <option>iPhone 13</option>
-  <option>iPhone 14</option>
-  <option>iPhone 15</option>
-  <option>Outro celular</option>
-</select>
+    };
 
   } else {
 
@@ -157,7 +175,6 @@ function gerarSensi() {
       awm: 20,
       olhadinha: 100
     };
-
   }
 
   document.getElementById("resultado").innerHTML =
