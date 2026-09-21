@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF Sensi</title>
+</head>
+<body>
+
+<h1>FF Sensi</h1>
+<p>Gerador de sensibilidade para Free Fire</p>
+
+<button onclick="gerarSensi()">Gerar Sensi</button>
+
+<h2 id="resultado"></h2>
+
+<script>
+function gerarSensi() {
+  let geral = Math.floor(Math.random() * 201);
+  let redDot = Math.floor(Math.random() * 201);
+  let mira2x = Math.floor(Math.random() * 201);
+  let mira4x = Math.floor(Math.random() * 201);
+
+  document.getElementById("resultado").innerHTML =
+    "Geral: " + geral +
+    "<br>Ponto Vermelho: " + redDot +
+    "<br>Mira 2x: " + mira2x +
+    "<br>Mira 4x: " + mira4x;
+}
+</script>
+
+</body>
+<
