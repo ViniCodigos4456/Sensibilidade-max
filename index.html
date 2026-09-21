@@ -64,10 +64,6 @@ button {
   cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.98);
-}
-
 #resultado {
   margin-top: 18px;
   line-height: 1.8;
@@ -91,22 +87,18 @@ button:active {
   <option>Redmi Note 14</option>
   <option>Redmi 12</option>
   <option>Redmi 13</option>
-
   <option>POCO X3 Pro</option>
   <option>POCO X5 Pro</option>
   <option>POCO X6</option>
-
   <option>Samsung Galaxy A14</option>
   <option>Samsung Galaxy A15</option>
   <option>Samsung Galaxy A24</option>
   <option>Samsung Galaxy A34</option>
-
   <option>iPhone 11</option>
   <option>iPhone 12</option>
   <option>iPhone 13</option>
   <option>iPhone 14</option>
   <option>iPhone 15</option>
-
   <option>Realme</option>
   <option>Outro celular</option>
 </select>
@@ -124,13 +116,7 @@ button:active {
 <div class="card">
 <label for="botao">Tamanho do botão</label>
 
-<input
-  id="botao"
-  type="number"
-  value="50"
-  min="1"
-  max="100"
->
+<input id="botao" type="number" value="50" min="1" max="100">
 </div>
 
 <div class="card">
@@ -146,47 +132,131 @@ GERAR SENSI
 </div>
 
 <script>
+
+const sensis = {
+
+  "Redmi Note 11": {
+    Alta: [200,170,190,170,20,100],
+    Padrão: [196,150,182,165,20,100]
+  },
+
+  "Redmi Note 12": {
+    Alta: [198,168,188,168,20,100],
+    Padrão: [194,148,180,163,20,100]
+  },
+
+  "Redmi Note 13": {
+    Alta: [200,175,192,172,20,100],
+    Padrão: [196,155,184,167,20,100]
+  },
+
+  "Redmi Note 14": {
+    Alta: [200,178,194,175,20,100],
+    Padrão: [197,158,186,170,20,100]
+  },
+
+  "Redmi 12": {
+    Alta: [198,165,185,165,20,100],
+    Padrão: [194,145,178,160,20,100]
+  },
+
+  "Redmi 13": {
+    Alta: [200,172,190,170,20,100],
+    Padrão: [196,152,182,165,20,100]
+  },
+
+  "POCO X3 Pro": {
+    Alta: [200,180,195,175,20,100],
+    Padrão: [198,160,188,170,20,100]
+  },
+
+  "POCO X5 Pro": {
+    Alta: [200,182,196,178,20,100],
+    Padrão: [198,165,190,173,20,100]
+  },
+
+  "POCO X6": {
+    Alta: [200,185,198,180,20,100],
+    Padrão: [198,168,192,175,20,100]
+  },
+
+  "Samsung Galaxy A14": {
+    Alta: [198,165,185,165,20,100],
+    Padrão: [194,145,178,160,20,100]
+  },
+
+  "Samsung Galaxy A15": {
+    Alta: [200,170,188,168,20,100],
+    Padrão: [196,150,180,163,20,100]
+  },
+
+  "Samsung Galaxy A24": {
+    Alta: [200,175,192,172,20,100],
+    Padrão: [196,155,184,167,20,100]
+  },
+
+  "Samsung Galaxy A34": {
+    Alta: [200,180,195,175,20,100],
+    Padrão: [198,160,188,170,20,100]
+  },
+
+  "iPhone 11": {
+    Alta: [200,180,195,175,20,100],
+    Padrão: [198,160,188,170,20,100]
+  },
+
+  "iPhone 12": {
+    Alta: [200,185,198,180,20,100],
+    Padrão: [198,165,192,175,20,100]
+  },
+
+  "iPhone 13": {
+    Alta: [200,188,200,182,20,100],
+    Padrão: [198,170,194,178,20,100]
+  },
+
+  "iPhone 14": {
+    Alta: [200,190,200,185,20,100],
+    Padrão: [198,172,196,180,20,100]
+  },
+
+  "iPhone 15": {
+    Alta: [200,192,200,188,20,100],
+    Padrão: [200,175,198,183,20,100]
+  },
+
+  "Realme": {
+    Alta: [200,175,190,170,20,100],
+    Padrão: [196,155,182,165,20,100]
+  },
+
+  "Outro celular": {
+    Alta: [200,170,190,170,20,100],
+    Padrão: [196,150,182,165,20,100]
+  }
+
+};
+
+
 function gerarSensi() {
 
   const celular = document.getElementById("celular").value;
   const modo = document.getElementById("modo").value;
   const botao = document.getElementById("botao").value;
 
-  let sensi;
-
-  if (modo === "Alta") {
-
-    sensi = {
-      geral: 200,
-      vermelho: 170,
-      mira2x: 190,
-      mira4x: 170,
-      awm: 20,
-      olhadinha: 100
-    };
-
-  } else {
-
-    sensi = {
-      geral: 196,
-      vermelho: 150,
-      mira2x: 182,
-      mira4x: 165,
-      awm: 20,
-      olhadinha: 100
-    };
-  }
+  const valores = sensis[celular][modo];
 
   document.getElementById("resultado").innerHTML =
-    "<b>" + celular + "</b><br>" +
-    "Geral: " + sensi.geral + "<br>" +
-    "Ponto Vermelho: " + sensi.vermelho + "<br>" +
-    "Mira 2x: " + sensi.mira2x + "<br>" +
-    "Mira 4x: " + sensi.mira4x + "<br>" +
-    "AWM: " + sensi.awm + "<br>" +
-    "Olhadinha: " + sensi.olhadinha + "<br>" +
+    "<b>" + celular + "</b><br><br>" +
+    "Geral: " + valores[0] + "<br>" +
+    "Ponto Vermelho: " + valores[1] + "<br>" +
+    "Mira 2x: " + valores[2] + "<br>" +
+    "Mira 4x: " + valores[3] + "<br>" +
+    "AWM: " + valores[4] + "<br>" +
+    "Olhadinha: " + valores[5] + "<br>" +
     "Tamanho do botão: " + botao;
 }
+
 </script>
 
 </body>
