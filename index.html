@@ -19,259 +19,160 @@ body {
   background:
     linear-gradient(
       90deg,
-      rgba(2, 6, 18, .94),
-      rgba(2, 10, 30, .72),
-      rgba(2, 6, 18, .90)
+      rgba(2, 6, 18, .93),
+      rgba(2, 10, 30, .68),
+      rgba(2, 6, 18, .93)
     ),
     url("killua.jpg") center top / cover fixed no-repeat;
 
   overflow-x: hidden;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-
-  background:
-    radial-gradient(
-      circle at 80% 25%,
-      rgba(0, 153, 255, .25),
-      transparent 35%
-    );
-
-  z-index: -1;
-}
-
 .container {
   width: 92%;
-  max-width: 600px;
+  max-width: 650px;
   margin: auto;
-  padding: 28px 0 50px;
+  padding: 35px 0 50px;
 }
 
 .logo {
   text-align: center;
-  margin-bottom: 24px;
+  font-size: 52px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px #00aaff;
 }
 
-.logo h1 {
-  margin: 0;
-  font-size: 42px;
-  font-weight: 900;
-  letter-spacing: 4px;
-
-  text-shadow:
-    0 0 8px #00aaff,
-    0 0 20px #008cff,
-    0 0 45px #0066ff;
-}
-
-.logo p {
-  margin: 7px 0 0;
-  color: #8edaff;
-  font-size: 13px;
-  letter-spacing: 1px;
+.subtitle {
+  text-align: center;
+  color: #8bdcff;
+  font-size: 17px;
+  margin-top: 5px;
+  margin-bottom: 35px;
 }
 
 .card {
-  background: rgba(3, 13, 31, .76);
-  border: 1px solid rgba(65, 175, 255, .30);
-  border-radius: 20px;
-  padding: 19px;
-  margin-bottom: 15px;
-
-  backdrop-filter: blur(13px);
-
-  box-shadow:
-    0 10px 35px rgba(0,0,0,.60),
-    inset 0 0 20px rgba(0,140,255,.04);
+  background: rgba(3, 20, 43, .82);
+  border: 1px solid rgba(0, 170, 255, .45);
+  border-radius: 28px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0, 130, 255, .12);
+  backdrop-filter: blur(6px);
 }
 
 label {
   display: block;
-  margin-bottom: 10px;
-
-  color: #dff5ff;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-/* PESQUISA */
-
-.search {
-  position: relative;
-}
-
-.search input {
-  padding-left: 47px;
-}
-
-.lupa {
-  position: absolute;
-  left: 16px;
-  top: 17px;
   font-size: 19px;
-  color: #62caff;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 input,
 select {
   width: 100%;
-  height: 54px;
-
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 14px;
-
-  background: rgba(5, 24, 50, .94);
-
+  padding: 18px;
+  border-radius: 17px;
+  border: 1px solid #174d77;
+  background: #061b34;
   color: white;
-  font-size: 15px;
-
-  padding: 0 15px;
+  font-size: 17px;
   outline: none;
 }
 
 input:focus,
 select:focus {
   border-color: #00aaff;
-  box-shadow: 0 0 12px rgba(0,160,255,.35);
+  box-shadow: 0 0 10px rgba(0,170,255,.3);
 }
 
-/* LISTA DE CELULARES */
-
-#listaCelulares {
-  display: none;
-  margin-top: 10px;
-  max-height: 210px;
-  overflow-y: auto;
-
-  border-radius: 13px;
-  border: 1px solid rgba(0,170,255,.20);
-  background: rgba(2,13,30,.96);
+.search {
+  position: relative;
 }
 
-.modelo {
-  padding: 13px 15px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  cursor: pointer;
+.search span {
+  position: absolute;
+  left: 20px;
+  top: 17px;
+  font-size: 23px;
+  color: #52caff;
 }
 
-.modelo:last-child {
-  border-bottom: none;
+.search input {
+  padding-left: 55px;
 }
-
-.modelo:hover {
-  background: rgba(0,145,255,.18);
-  color: #72d4ff;
-}
-
-.modelo small {
-  display: block;
-  margin-top: 3px;
-  color: #6e8ba5;
-}
-
-/* BOTÃO */
 
 button {
   width: 100%;
-  height: 59px;
-
+  padding: 20px;
   border: none;
-  border-radius: 16px;
-
-  background: linear-gradient(
-    90deg,
-    #006cff,
-    #00b7ff,
-    #006cff
-  );
-
-  background-size: 200%;
-
+  border-radius: 18px;
   color: white;
-  font-size: 17px;
-  font-weight: 900;
-
+  font-size: 21px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #087cff, #00c8ff);
+  box-shadow: 0 0 20px rgba(0,170,255,.45);
   cursor: pointer;
-
-  box-shadow:
-    0 0 20px rgba(0,155,255,.55);
-
-  transition: .2s;
-}
-
-button:hover {
-  background-position: right;
-  box-shadow:
-    0 0 32px rgba(0,180,255,.80);
 }
 
 button:active {
-  transform: scale(.97);
+  transform: scale(.98);
 }
 
-/* RESULTADO */
-
-.resultado {
+.result {
   display: none;
 }
 
-.resultado.ativo {
-  display: block;
-  animation: aparecer .35s ease;
-}
-
-@keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.resultado h2 {
-  margin: 0 0 16px;
-  color: #62ceff;
-
-  text-shadow:
-    0 0 10px rgba(0,170,255,.5);
+.result h2 {
+  text-align: center;
+  color: #59d7ff;
+  margin-top: 0;
 }
 
 .sensi {
   display: grid;
-  gap: 9px;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
-.sensi div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 13px 14px;
-
-  border-radius: 12px;
-
-  background: rgba(255,255,255,.055);
-  border: 1px solid rgba(255,255,255,.07);
+.item {
+  background: rgba(2, 12, 27, .8);
+  border: 1px solid #14547e;
+  border-radius: 15px;
+  padding: 15px;
 }
 
-.sensi strong {
-  color: #68d1ff;
-  font-size: 17px;
+.item strong {
+  display: block;
+  color: #8bdcff;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.item span {
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .info {
   text-align: center;
-  color: #7893ad;
-  font-size: 11px;
-  margin-top: 20px;
+  color: #8495a8;
+  font-size: 13px;
+  margin-top: 30px;
+}
+
+@media(max-width: 450px) {
+  .logo {
+    font-size: 43px;
+  }
+
+  .container {
+    width: 94%;
+  }
+
+  .card {
+    padding: 22px;
+  }
 }
 </style>
 </head>
@@ -280,132 +181,158 @@ button:active {
 
 <div class="container">
 
-  <div class="logo">
-    <h1>SENSI FF</h1>
-    <p>GERADOR DE SENSIBILIDADE</p>
-  </div>
+  <div class="logo">SENSI FF</div>
+  <div class="subtitle">GERADOR DE SENSIBILIDADE</div>
 
   <!-- CELULAR -->
-
   <div class="card">
-
     <label>CELULAR</label>
 
     <div class="search">
-
-      <span class="lupa">⌕</span>
-
+      <span>⌕</span>
       <input
-        id="pesquisa"
-        type="text"
+        id="celular"
+        list="celulares"
         placeholder="Pesquisar celular..."
-        autocomplete="off"
       >
-
     </div>
 
-    <div id="listaCelulares"></div>
+    <datalist id="celulares">
+      <option value="Redmi Note 11">
+      <option value="Redmi Note 12">
+      <option value="Redmi Note 13">
+      <option value="Redmi Note 14">
+      <option value="POCO X3">
+      <option value="POCO X5 Pro">
+      <option value="POCO X6">
+      <option value="POCO F5">
 
-    <input
-      id="celularEscolhido"
-      type="hidden"
-      value="Redmi Note 11"
-    >
+      <option value="Samsung Galaxy A05">
+      <option value="Samsung Galaxy A14">
+      <option value="Samsung Galaxy A15">
+      <option value="Samsung Galaxy A24">
+      <option value="Samsung Galaxy A34">
+      <option value="Samsung Galaxy A54">
+      <option value="Samsung Galaxy S23">
+      <option value="Samsung Galaxy S24">
 
+      <option value="Moto G23">
+      <option value="Moto G24">
+      <option value="Moto G32">
+      <option value="Moto G54">
+      <option value="Moto G84">
+
+      <option value="iPhone 11">
+      <option value="iPhone 12">
+      <option value="iPhone 13">
+      <option value="iPhone 14">
+      <option value="iPhone 15">
+      <option value="iPhone 16">
+
+      <option value="Realme C35">
+      <option value="Realme C55">
+      <option value="Realme C67">
+      <option value="Realme 10">
+      <option value="Realme 11">
+      <option value="Realme 12">
+
+      <option value="ASUS ROG Phone 6">
+      <option value="ASUS ROG Phone 7">
+      <option value="OnePlus 11">
+      <option value="Google Pixel 8">
+      <option value="Infinix Hot 30">
+      <option value="Infinix Hot 40">
+      <option value="Tecno Pova 5">
+      <option value="Tecno Pova 6">
+    </datalist>
   </div>
 
   <!-- MODO -->
-
   <div class="card">
-
-    <label for="modo">MODO</label>
+    <label>MODO</label>
 
     <select id="modo">
-
-      <option value="Alta">Alta</option>
-      <option value="Padrao">Padrão</option>
-      <option value="Capa">Capa</option>
-      <option value="Lisa">Lisa</option>
-
+      <option>Alta</option>
+      <option>Padrão</option>
+      <option>Capa</option>
+      <option>Lisa</option>
+      <option>AP</option>
+      <option>Rush</option>
+      <option>X1</option>
     </select>
+  </div>
 
+  <!-- ARMA -->
+  <div class="card">
+    <label>FOCO DA ARMA</label>
+
+    <select id="arma">
+      <option>Geral</option>
+      <option>M1014</option>
+      <option>UMP</option>
+      <option>Desert</option>
+      <option>XM8</option>
+      <option>AWM</option>
+    </select>
   </div>
 
   <!-- BOTÃO -->
-
   <div class="card">
-
-    <label for="tamanho">
-      TAMANHO DO BOTÃO
-    </label>
+    <label>TAMANHO DO BOTÃO</label>
 
     <input
-      id="tamanho"
+      id="botao"
       type="number"
       min="1"
       max="100"
       value="50"
+      placeholder="Ex: 50"
     >
-
   </div>
 
   <!-- GERAR -->
-
   <div class="card">
-
-    <button id="gerar">
-      GERAR SENSI
-    </button>
-
+    <button onclick="gerarSensi()">GERAR SENSI</button>
   </div>
 
   <!-- RESULTADO -->
+  <div class="card result" id="resultado">
 
-  <div id="resultado" class="card resultado">
-
-    <h2 id="nomeResultado">
-      Redmi Note 11
-    </h2>
+    <h2>SENSIBILIDADE GERADA</h2>
 
     <div class="sensi">
 
-      <div>
-        <span>Geral</span>
-        <strong id="geral">200</strong>
+      <div class="item">
+        <strong>GERAL</strong>
+        <span id="geral">200</span>
       </div>
 
-      <div>
-        <span>Ponto Vermelho</span>
-        <strong id="red">170</strong>
+      <div class="item">
+        <strong>PONTO VERMELHO</strong>
+        <span id="red">170</span>
       </div>
 
-      <div>
-        <span>Mira 2x</span>
-        <strong id="mira2">190</strong>
+      <div class="item">
+        <strong>MIRA 2X</strong>
+        <span id="mira2">190</span>
       </div>
 
-      <div>
-        <span>Mira 4x</span>
-        <strong id="mira4">170</strong>
+      <div class="item">
+        <strong>MIRA 4X</strong>
+        <span id="mira4">170</span>
       </div>
 
-      <div>
-        <span>AWM</span>
-        <strong id="awm">20</strong>
+      <div class="item">
+        <strong>AWM</strong>
+        <span id="awm">20</span>
       </div>
 
-      <div>
-        <span>Olhadinha</span>
-        <strong id="olhadinha">100</strong>
-      </div>
-
-      <div>
-        <span>Tamanho do botão</span>
-        <strong id="botaoResultado">50</strong>
+      <div class="item">
+        <strong>OLHADINHA</strong>
+        <span id="olhadinha">100</span>
       </div>
 
     </div>
-
   </div>
 
   <div class="info">
@@ -416,413 +343,126 @@ button:active {
 
 <script>
 
-/* =========================
-   CELULARES
-========================= */
-
-const celulares = [
-
-"Redmi Note 11",
-"Redmi Note 12",
-"Redmi Note 12 Pro",
-"Redmi Note 13",
-"Redmi Note 13 Pro",
-"Redmi Note 14",
-"Redmi Note 14 Pro",
-"Redmi 9",
-"Redmi 10",
-"Redmi 10C",
-"Redmi 12",
-"Redmi 13",
-
-"POCO X3",
-"POCO X3 Pro",
-"POCO X4 Pro",
-"POCO X5",
-"POCO X5 Pro",
-"POCO X6",
-"POCO X6 Pro",
-"POCO F3",
-"POCO F4",
-"POCO F5",
-"POCO F6",
-
-"Samsung Galaxy A03",
-"Samsung Galaxy A04",
-"Samsung Galaxy A05",
-"Samsung Galaxy A13",
-"Samsung Galaxy A14",
-"Samsung Galaxy A15",
-"Samsung Galaxy A23",
-"Samsung Galaxy A24",
-"Samsung Galaxy A25",
-"Samsung Galaxy A33",
-"Samsung Galaxy A34",
-"Samsung Galaxy A35",
-"Samsung Galaxy A53",
-"Samsung Galaxy A54",
-"Samsung Galaxy A55",
-
-"Samsung Galaxy S20",
-"Samsung Galaxy S21",
-"Samsung Galaxy S22",
-"Samsung Galaxy S23",
-"Samsung Galaxy S24",
-"Samsung Galaxy S25",
-
-"Moto G20",
-"Moto G22",
-"Moto G23",
-"Moto G24",
-"Moto G30",
-"Moto G31",
-"Moto G32",
-"Moto G42",
-"Moto G52",
-"Moto G53",
-"Moto G54",
-"Moto G60",
-"Moto G62",
-"Moto G73",
-"Moto G84",
-
-"iPhone 11",
-"iPhone 11 Pro",
-"iPhone 11 Pro Max",
-"iPhone 12",
-"iPhone 12 Pro",
-"iPhone 12 Pro Max",
-"iPhone 13",
-"iPhone 13 Pro",
-"iPhone 13 Pro Max",
-"iPhone 14",
-"iPhone 14 Pro",
-"iPhone 14 Pro Max",
-"iPhone 15",
-"iPhone 15 Pro",
-"iPhone 15 Pro Max",
-"iPhone 16",
-"iPhone 16 Pro",
-"iPhone 16 Pro Max",
-
-"Realme C25",
-"Realme C35",
-"Realme C55",
-"Realme C67",
-"Realme 8",
-"Realme 9",
-"Realme 10",
-"Realme 11",
-"Realme 12",
-"Realme GT Neo",
-
-"ASUS ROG Phone 5",
-"ASUS ROG Phone 6",
-"ASUS ROG Phone 7",
-"ASUS ROG Phone 8",
-
-"OnePlus 8",
-"OnePlus 9",
-"OnePlus 10",
-"OnePlus 11",
-"OnePlus 12",
-
-"Google Pixel 6",
-"Google Pixel 7",
-"Google Pixel 8",
-"Google Pixel 9",
-
-"Infinix Hot 10",
-"Infinix Hot 11",
-"Infinix Hot 12",
-"Infinix Hot 20",
-"Infinix Hot 30",
-"Infinix Hot 40",
-"Infinix Note 12",
-"Infinix Note 30",
-
-"Tecno Spark 8",
-"Tecno Spark 9",
-"Tecno Spark 10",
-"Tecno Spark 20",
-"Tecno Pova 4",
-"Tecno Pova 5",
-"Tecno Pova 6"
-
-];
-
-
-/* =========================
-   PESQUISA
-========================= */
-
-const pesquisa =
-document.getElementById("pesquisa");
-
-const lista =
-document.getElementById("listaCelulares");
-
-const escolhido =
-document.getElementById("celularEscolhido");
-
-
-function mostrarCelulares(texto = "") {
-
-  const busca = texto.toLowerCase().trim();
-
-  const encontrados =
-    celulares.filter(nome =>
-      nome.toLowerCase().includes(busca)
-    );
-
-  lista.innerHTML = "";
-
-  if (encontrados.length === 0) {
-
-    lista.innerHTML =
-      '<div class="modelo">Nenhum celular encontrado.</div>';
-
-    lista.style.display = "block";
-
-    return;
-  }
-
-  encontrados.forEach(nome => {
-
-    const item =
-      document.createElement("div");
-
-    item.className = "modelo";
-
-    item.innerHTML =
-      nome +
-      "<small>Toque para selecionar</small>";
-
-    item.addEventListener(
-      "click",
-      function () {
-
-        escolhido.value = nome;
-        pesquisa.value = nome;
-
-        lista.style.display = "none";
-      }
-    );
-
-    lista.appendChild(item);
-
-  });
-
-  lista.style.display = "block";
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function gerarSensi() {
 
-pesquisa.addEventListener(
-  "focus",
-  function () {
-    mostrarCelulares(pesquisa.value);
+  const celular =
+    document.getElementById("celular").value;
+
+  const modo =
+    document.getElementById("modo").value;
+
+  const arma =
+    document.getElementById("arma").value;
+
+  let geral = 200;
+  let red = 170;
+  let mira2 = 190;
+  let mira4 = 170;
+  let awm = 20;
+  let olhadinha = 100;
+
+  /*
+    Redmi Note 11:
+    configuração base salva
+  */
+
+  if (celular.toLowerCase().includes("redmi note 11")) {
+
+    geral = 200;
+    red = 170;
+    mira2 = 190;
+    mira4 = 170;
+    awm = 20;
+    olhadinha = 100;
+
+  } else {
+
+    geral = aleatorio(180, 200);
+    red = aleatorio(150, 180);
+    mira2 = aleatorio(170, 195);
+    mira4 = aleatorio(150, 180);
+    awm = aleatorio(15, 30);
+    olhadinha = aleatorio(80, 100);
   }
-);
 
+  /* Ajustes por modo */
 
-pesquisa.addEventListener(
-  "input",
-  function () {
-    mostrarCelulares(pesquisa.value);
+  if (modo === "Capa") {
+    geral = Math.min(200, geral + 5);
+    red = Math.min(200, red + 5);
   }
-);
 
-
-document.addEventListener(
-  "click",
-  function(event) {
-
-    if (
-      !event.target.closest(".search") &&
-      !event.target.closest("#listaCelulares")
-    ) {
-
-      lista.style.display = "none";
-    }
-
+  if (modo === "Lisa") {
+    geral = Math.max(150, geral - 10);
+    red = Math.max(130, red - 10);
   }
-);
 
+  if (modo === "Rush") {
+    geral = Math.min(200, geral + 8);
+    red = Math.min(200, red + 8);
+  }
 
-/* =========================
-   SENSI
-========================= */
+  if (modo === "X1") {
+    geral = Math.min(200, geral + 4);
+    red = Math.min(200, red + 4);
+  }
 
-document
-.getElementById("gerar")
-.addEventListener(
-  "click",
-  function() {
+  if (modo === "Padrão") {
+    geral = aleatorio(170, 190);
+    red = aleatorio(150, 175);
+  }
 
-    const celular =
-      escolhido.value || "Redmi Note 11";
+  if (modo === "AP") {
+    geral = aleatorio(185, 200);
+    red = aleatorio(160, 185);
+  }
 
-    const modo =
-      document.getElementById("modo").value;
+  /* Ajustes por arma */
 
-    let tamanho =
-      Number(
-        document.getElementById("tamanho").value
-      );
+  if (arma === "M1014") {
+    geral = Math.min(200, geral + 5);
+    red = Math.min(200, red + 5);
+  }
 
+  if (arma === "UMP") {
+    mira2 = Math.min(200, mira2 + 5);
+  }
 
-    if (!tamanho || tamanho < 1) {
-      tamanho = 50;
-    }
+  if (arma === "Desert") {
+    red = Math.min(200, red + 7);
+  }
 
-    if (tamanho > 100) {
-      tamanho = 100;
-    }
+  if (arma === "XM8") {
+    mira2 = Math.min(200, mira2 + 8);
+    mira4 = Math.min(200, mira4 + 5);
+  }
 
+  if (arma === "AWM") {
+    awm = Math.min(100, awm + 5);
+  }
 
-    /*
-      REDMI NOTE 11
-      SENSI ORIGINAL
-    */
+  /* Mostrar resultado */
 
-    let geral = 200;
-    let red = 170;
-    let mira2 = 190;
-    let mira4 = 170;
-    let awm = 20;
-    let olhadinha = 100;
+  document.getElementById("geral").textContent = geral;
+  document.getElementById("red").textContent = red;
+  document.getElementById("mira2").textContent = mira2;
+  document.getElementById("mira4").textContent = mira4;
+  document.getElementById("awm").textContent = awm;
+  document.getElementById("olhadinha").textContent = olhadinha;
 
+  document.getElementById("resultado").style.display = "block";
 
-    /*
-      OUTROS CELULARES
-      Valores diferentes apenas
-      para demonstração.
-    */
-
-    if (celular.includes("iPhone")) {
-
-      geral = 195;
-      red = 165;
-      mira2 = 185;
-      mira4 = 165;
-      awm = 25;
-
-    }
-
-    else if (celular.includes("Samsung")) {
-
-      geral = 198;
-      red = 168;
-      mira2 = 188;
-      mira4 = 168;
-      awm = 22;
-
-    }
-
-    else if (celular.includes("POCO")) {
-
-      geral = 200;
-      red = 175;
-      mira2 = 195;
-      mira4 = 175;
-      awm = 20;
-
-    }
-
-    else if (celular.includes("Realme")) {
-
-      geral = 197;
-      red = 170;
-      mira2 = 190;
-      mira4 = 170;
-      awm = 22;
-
-    }
-
-
-    /*
-      MODOS
-    */
-
-    if (modo === "Padrao") {
-
-      geral -= 5;
-      red -= 5;
-      mira2 -= 5;
-      mira4 -= 5;
-
-    }
-
-    if (modo === "Capa") {
-
-      geral = Math.min(200, geral + 5);
-      red = Math.min(200, red + 5);
-      mira2 = Math.min(200, mira2 + 3);
-
-    }
-
-    if (modo === "Lisa") {
-
-      geral -= 8;
-      red -= 8;
-      mira2 -= 8;
-      mira4 -= 8;
-
-    }
-
-
-    /*
-      MOSTRAR RESULTADO
-    */
-
-    document.getElementById(
-      "nomeResultado"
-    ).textContent = celular;
-
-    document.getElementById(
-      "geral"
-    ).textContent = geral;
-
-    document.getElementById(
-      "red"
-    ).textContent = red;
-
-    document.getElementById(
-      "mira2"
-    ).textContent = mira2;
-
-    document.getElementById(
-      "mira4"
-    ).textContent = mira4;
-
-    document.getElementById(
-      "awm"
-    ).textContent = awm;
-
-    document.getElementById(
-      "olhadinha"
-    ).textContent = olhadinha;
-
-    document.getElementById(
-      "botaoResultado"
-    ).textContent = tamanho;
-
-
-    const resultado =
-      document.getElementById("resultado");
-
-    resultado.classList.add("ativo");
-
-
-    resultado.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
+  document.getElementById("resultado")
+    .scrollIntoView({
+      behavior: "smooth"
     });
-
-  }
-);
+}
 
 </script>
 
 </body>
-</html>
+  </html>
