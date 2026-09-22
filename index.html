@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Sensi FF</title>
 
 <style>
@@ -18,166 +17,200 @@ body {
   color: white;
 
   background:
-    linear-gradient(rgba(0, 4, 15, .58), rgba(3, 0, 20, .72)),
-    url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=80")
-    center/cover fixed no-repeat;
+    linear-gradient(
+      90deg,
+      rgba(2, 6, 18, .94),
+      rgba(2, 10, 30, .72),
+      rgba(2, 6, 18, .90)
+    ),
+    url("killua.png") center top / cover fixed no-repeat;
+
+  overflow-x: hidden;
 }
 
-/* CAMADA AZUL */
-body::before {
+body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 119, 255, .28),
-    rgba(0, 0, 50, .35),
-    rgba(90, 0, 255, .25)
-  );
   pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(0, 153, 255, .25),
+      transparent 35%
+    );
+
+  z-index: -1;
 }
 
 .container {
-  position: relative;
-  z-index: 2;
-
   width: 92%;
   max-width: 600px;
-
   margin: auto;
-  padding: 30px 0 50px;
+  padding: 28px 0 50px;
 }
-
-/* TÍTULO */
 
 .logo {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .logo h1 {
   margin: 0;
-
-  font-size: 43px;
+  font-size: 42px;
   font-weight: 900;
   letter-spacing: 4px;
-
-  color: white;
 
   text-shadow:
     0 0 8px #00aaff,
     0 0 20px #008cff,
-    0 0 40px #0066ff;
+    0 0 45px #0066ff;
 }
 
 .logo p {
-  margin-top: 8px;
-
-  color: #91d8ff;
-  font-size: 14px;
+  margin: 7px 0 0;
+  color: #8edaff;
+  font-size: 13px;
   letter-spacing: 1px;
 }
 
-/* CARDS */
-
 .card {
-  background: rgba(3, 13, 34, .74);
+  background: rgba(3, 13, 31, .76);
+  border: 1px solid rgba(65, 175, 255, .30);
+  border-radius: 20px;
+  padding: 19px;
+  margin-bottom: 15px;
 
-  border: 1px solid rgba(52, 160, 255, .30);
-
-  border-radius: 22px;
-
-  padding: 20px;
-
-  margin-bottom: 17px;
+  backdrop-filter: blur(13px);
 
   box-shadow:
-    0 10px 35px rgba(0, 0, 0, .65),
-    inset 0 0 25px rgba(0, 130, 255, .05);
-
-  backdrop-filter: blur(12px);
+    0 10px 35px rgba(0,0,0,.60),
+    inset 0 0 20px rgba(0,140,255,.04);
 }
 
 label {
   display: block;
-
   margin-bottom: 10px;
 
-  font-size: 15px;
+  color: #dff5ff;
+  font-size: 14px;
   font-weight: bold;
-
-  color: #dff4ff;
 }
 
-select,
-input {
+/* PESQUISA */
+
+.search {
+  position: relative;
+}
+
+.search input {
+  padding-left: 47px;
+}
+
+.lupa {
+  position: absolute;
+  left: 16px;
+  top: 17px;
+  font-size: 19px;
+  color: #62caff;
+}
+
+input,
+select {
   width: 100%;
-  height: 55px;
+  height: 54px;
 
   border: 1px solid rgba(255,255,255,.12);
-
   border-radius: 14px;
 
-  padding: 0 16px;
-
-  font-size: 16px;
+  background: rgba(5, 24, 50, .94);
 
   color: white;
+  font-size: 15px;
 
-  background: rgba(5, 24, 50, .92);
-
+  padding: 0 15px;
   outline: none;
 }
 
-select:focus,
-input:focus {
-  border-color: #139cff;
+input:focus,
+select:focus {
+  border-color: #00aaff;
+  box-shadow: 0 0 12px rgba(0,160,255,.35);
+}
 
-  box-shadow:
-    0 0 10px rgba(0, 153, 255, .45);
+/* LISTA DE CELULARES */
+
+#listaCelulares {
+  display: none;
+  margin-top: 10px;
+  max-height: 210px;
+  overflow-y: auto;
+
+  border-radius: 13px;
+  border: 1px solid rgba(0,170,255,.20);
+  background: rgba(2,13,30,.96);
+}
+
+.modelo {
+  padding: 13px 15px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  cursor: pointer;
+}
+
+.modelo:last-child {
+  border-bottom: none;
+}
+
+.modelo:hover {
+  background: rgba(0,145,255,.18);
+  color: #72d4ff;
+}
+
+.modelo small {
+  display: block;
+  margin-top: 3px;
+  color: #6e8ba5;
 }
 
 /* BOTÃO */
 
 button {
   width: 100%;
-  height: 60px;
+  height: 59px;
 
   border: none;
   border-radius: 16px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #006cff,
-      #00aaff,
-      #006cff
-    );
+  background: linear-gradient(
+    90deg,
+    #006cff,
+    #00b7ff,
+    #006cff
+  );
 
   background-size: 200%;
 
   color: white;
-
   font-size: 17px;
   font-weight: 900;
 
   cursor: pointer;
 
   box-shadow:
-    0 0 18px rgba(0, 145, 255, .55);
+    0 0 20px rgba(0,155,255,.55);
 
   transition: .2s;
 }
 
 button:hover {
   background-position: right;
-
   box-shadow:
-    0 0 30px rgba(0, 170, 255, .85);
+    0 0 32px rgba(0,180,255,.80);
 }
 
 button:active {
-  transform: scale(.96);
+  transform: scale(.97);
 }
 
 /* RESULTADO */
@@ -188,9 +221,7 @@ button:active {
 
 .resultado.ativo {
   display: block;
-
-  animation:
-    aparecer .4s ease;
+  animation: aparecer .35s ease;
 }
 
 @keyframes aparecer {
@@ -206,44 +237,592 @@ button:active {
 }
 
 .resultado h2 {
-  margin-top: 0;
-
-  color: #62caff;
+  margin: 0 0 16px;
+  color: #62ceff;
 
   text-shadow:
-    0 0 10px rgba(0, 170, 255, .5);
+    0 0 10px rgba(0,170,255,.5);
 }
 
 .sensi {
   display: grid;
-  gap: 10px;
+  gap: 9px;
 }
 
 .sensi div {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
 
-  padding: 14px;
+  padding: 13px 14px;
 
   border-radius: 12px;
 
   background: rgba(255,255,255,.055);
-
-  border: 1px solid rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.07);
 }
 
 .sensi strong {
-  color: #69cfff;
-
+  color: #68d1ff;
   font-size: 17px;
-
-  text-shadow:
-    0 0 8px rgba(0, 170, 255, .5);
 }
 
 .info {
   text-align: center;
+  color: #7893ad;
+  font-size: 11px;
+  margin-top: 20px;
+}
+</style>
+</head>
 
- 
+<body>
+
+<div class="container">
+
+  <div class="logo">
+    <h1>SENSI FF</h1>
+    <p>GERADOR DE SENSIBILIDADE</p>
+  </div>
+
+  <!-- CELULAR -->
+
+  <div class="card">
+
+    <label>CELULAR</label>
+
+    <div class="search">
+
+      <span class="lupa">⌕</span>
+
+      <input
+        id="pesquisa"
+        type="text"
+        placeholder="Pesquisar celular..."
+        autocomplete="off"
+      >
+
+    </div>
+
+    <div id="listaCelulares"></div>
+
+    <input
+      id="celularEscolhido"
+      type="hidden"
+      value="Redmi Note 11"
+    >
+
+  </div>
+
+  <!-- MODO -->
+
+  <div class="card">
+
+    <label for="modo">MODO</label>
+
+    <select id="modo">
+
+      <option value="Alta">Alta</option>
+      <option value="Padrao">Padrão</option>
+      <option value="Capa">Capa</option>
+      <option value="Lisa">Lisa</option>
+
+    </select>
+
+  </div>
+
+  <!-- BOTÃO -->
+
+  <div class="card">
+
+    <label for="tamanho">
+      TAMANHO DO BOTÃO
+    </label>
+
+    <input
+      id="tamanho"
+      type="number"
+      min="1"
+      max="100"
+      value="50"
+    >
+
+  </div>
+
+  <!-- GERAR -->
+
+  <div class="card">
+
+    <button id="gerar">
+      GERAR SENSI
+    </button>
+
+  </div>
+
+  <!-- RESULTADO -->
+
+  <div id="resultado" class="card resultado">
+
+    <h2 id="nomeResultado">
+      Redmi Note 11
+    </h2>
+
+    <div class="sensi">
+
+      <div>
+        <span>Geral</span>
+        <strong id="geral">200</strong>
+      </div>
+
+      <div>
+        <span>Ponto Vermelho</span>
+        <strong id="red">170</strong>
+      </div>
+
+      <div>
+        <span>Mira 2x</span>
+        <strong id="mira2">190</strong>
+      </div>
+
+      <div>
+        <span>Mira 4x</span>
+        <strong id="mira4">170</strong>
+      </div>
+
+      <div>
+        <span>AWM</span>
+        <strong id="awm">20</strong>
+      </div>
+
+      <div>
+        <span>Olhadinha</span>
+        <strong id="olhadinha">100</strong>
+      </div>
+
+      <div>
+        <span>Tamanho do botão</span>
+        <strong id="botaoResultado">50</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="info">
+    Configuração fictícia e não oficial do Free Fire.
+  </div>
+
+</div>
+
+<script>
+
+/* =========================
+   CELULARES
+========================= */
+
+const celulares = [
+
+"Redmi Note 11",
+"Redmi Note 12",
+"Redmi Note 12 Pro",
+"Redmi Note 13",
+"Redmi Note 13 Pro",
+"Redmi Note 14",
+"Redmi Note 14 Pro",
+"Redmi 9",
+"Redmi 10",
+"Redmi 10C",
+"Redmi 12",
+"Redmi 13",
+
+"POCO X3",
+"POCO X3 Pro",
+"POCO X4 Pro",
+"POCO X5",
+"POCO X5 Pro",
+"POCO X6",
+"POCO X6 Pro",
+"POCO F3",
+"POCO F4",
+"POCO F5",
+"POCO F6",
+
+"Samsung Galaxy A03",
+"Samsung Galaxy A04",
+"Samsung Galaxy A05",
+"Samsung Galaxy A13",
+"Samsung Galaxy A14",
+"Samsung Galaxy A15",
+"Samsung Galaxy A23",
+"Samsung Galaxy A24",
+"Samsung Galaxy A25",
+"Samsung Galaxy A33",
+"Samsung Galaxy A34",
+"Samsung Galaxy A35",
+"Samsung Galaxy A53",
+"Samsung Galaxy A54",
+"Samsung Galaxy A55",
+
+"Samsung Galaxy S20",
+"Samsung Galaxy S21",
+"Samsung Galaxy S22",
+"Samsung Galaxy S23",
+"Samsung Galaxy S24",
+"Samsung Galaxy S25",
+
+"Moto G20",
+"Moto G22",
+"Moto G23",
+"Moto G24",
+"Moto G30",
+"Moto G31",
+"Moto G32",
+"Moto G42",
+"Moto G52",
+"Moto G53",
+"Moto G54",
+"Moto G60",
+"Moto G62",
+"Moto G73",
+"Moto G84",
+
+"iPhone 11",
+"iPhone 11 Pro",
+"iPhone 11 Pro Max",
+"iPhone 12",
+"iPhone 12 Pro",
+"iPhone 12 Pro Max",
+"iPhone 13",
+"iPhone 13 Pro",
+"iPhone 13 Pro Max",
+"iPhone 14",
+"iPhone 14 Pro",
+"iPhone 14 Pro Max",
+"iPhone 15",
+"iPhone 15 Pro",
+"iPhone 15 Pro Max",
+"iPhone 16",
+"iPhone 16 Pro",
+"iPhone 16 Pro Max",
+
+"Realme C25",
+"Realme C35",
+"Realme C55",
+"Realme C67",
+"Realme 8",
+"Realme 9",
+"Realme 10",
+"Realme 11",
+"Realme 12",
+"Realme GT Neo",
+
+"ASUS ROG Phone 5",
+"ASUS ROG Phone 6",
+"ASUS ROG Phone 7",
+"ASUS ROG Phone 8",
+
+"OnePlus 8",
+"OnePlus 9",
+"OnePlus 10",
+"OnePlus 11",
+"OnePlus 12",
+
+"Google Pixel 6",
+"Google Pixel 7",
+"Google Pixel 8",
+"Google Pixel 9",
+
+"Infinix Hot 10",
+"Infinix Hot 11",
+"Infinix Hot 12",
+"Infinix Hot 20",
+"Infinix Hot 30",
+"Infinix Hot 40",
+"Infinix Note 12",
+"Infinix Note 30",
+
+"Tecno Spark 8",
+"Tecno Spark 9",
+"Tecno Spark 10",
+"Tecno Spark 20",
+"Tecno Pova 4",
+"Tecno Pova 5",
+"Tecno Pova 6"
+
+];
+
+
+/* =========================
+   PESQUISA
+========================= */
+
+const pesquisa =
+document.getElementById("pesquisa");
+
+const lista =
+document.getElementById("listaCelulares");
+
+const escolhido =
+document.getElementById("celularEscolhido");
+
+
+function mostrarCelulares(texto = "") {
+
+  const busca = texto.toLowerCase().trim();
+
+  const encontrados =
+    celulares.filter(nome =>
+      nome.toLowerCase().includes(busca)
+    );
+
+  lista.innerHTML = "";
+
+  if (encontrados.length === 0) {
+
+    lista.innerHTML =
+      '<div class="modelo">Nenhum celular encontrado.</div>';
+
+    lista.style.display = "block";
+
+    return;
+  }
+
+  encontrados.forEach(nome => {
+
+    const item =
+      document.createElement("div");
+
+    item.className = "modelo";
+
+    item.innerHTML =
+      nome +
+      "<small>Toque para selecionar</small>";
+
+    item.addEventListener(
+      "click",
+      function () {
+
+        escolhido.value = nome;
+        pesquisa.value = nome;
+
+        lista.style.display = "none";
+      }
+    );
+
+    lista.appendChild(item);
+
+  });
+
+  lista.style.display = "block";
+}
+
+
+pesquisa.addEventListener(
+  "focus",
+  function () {
+    mostrarCelulares(pesquisa.value);
+  }
+);
+
+
+pesquisa.addEventListener(
+  "input",
+  function () {
+    mostrarCelulares(pesquisa.value);
+  }
+);
+
+
+document.addEventListener(
+  "click",
+  function(event) {
+
+    if (
+      !event.target.closest(".search") &&
+      !event.target.closest("#listaCelulares")
+    ) {
+
+      lista.style.display = "none";
+    }
+
+  }
+);
+
+
+/* =========================
+   SENSI
+========================= */
+
+document
+.getElementById("gerar")
+.addEventListener(
+  "click",
+  function() {
+
+    const celular =
+      escolhido.value || "Redmi Note 11";
+
+    const modo =
+      document.getElementById("modo").value;
+
+    let tamanho =
+      Number(
+        document.getElementById("tamanho").value
+      );
+
+
+    if (!tamanho || tamanho < 1) {
+      tamanho = 50;
+    }
+
+    if (tamanho > 100) {
+      tamanho = 100;
+    }
+
+
+    /*
+      REDMI NOTE 11
+      SENSI ORIGINAL
+    */
+
+    let geral = 200;
+    let red = 170;
+    let mira2 = 190;
+    let mira4 = 170;
+    let awm = 20;
+    let olhadinha = 100;
+
+
+    /*
+      OUTROS CELULARES
+      Valores diferentes apenas
+      para demonstração.
+    */
+
+    if (celular.includes("iPhone")) {
+
+      geral = 195;
+      red = 165;
+      mira2 = 185;
+      mira4 = 165;
+      awm = 25;
+
+    }
+
+    else if (celular.includes("Samsung")) {
+
+      geral = 198;
+      red = 168;
+      mira2 = 188;
+      mira4 = 168;
+      awm = 22;
+
+    }
+
+    else if (celular.includes("POCO")) {
+
+      geral = 200;
+      red = 175;
+      mira2 = 195;
+      mira4 = 175;
+      awm = 20;
+
+    }
+
+    else if (celular.includes("Realme")) {
+
+      geral = 197;
+      red = 170;
+      mira2 = 190;
+      mira4 = 170;
+      awm = 22;
+
+    }
+
+
+    /*
+      MODOS
+    */
+
+    if (modo === "Padrao") {
+
+      geral -= 5;
+      red -= 5;
+      mira2 -= 5;
+      mira4 -= 5;
+
+    }
+
+    if (modo === "Capa") {
+
+      geral = Math.min(200, geral + 5);
+      red = Math.min(200, red + 5);
+      mira2 = Math.min(200, mira2 + 3);
+
+    }
+
+    if (modo === "Lisa") {
+
+      geral -= 8;
+      red -= 8;
+      mira2 -= 8;
+      mira4 -= 8;
+
+    }
+
+
+    /*
+      MOSTRAR RESULTADO
+    */
+
+    document.getElementById(
+      "nomeResultado"
+    ).textContent = celular;
+
+    document.getElementById(
+      "geral"
+    ).textContent = geral;
+
+    document.getElementById(
+      "red"
+    ).textContent = red;
+
+    document.getElementById(
+      "mira2"
+    ).textContent = mira2;
+
+    document.getElementById(
+      "mira4"
+    ).textContent = mira4;
+
+    document.getElementById(
+      "awm"
+    ).textContent = awm;
+
+    document.getElementById(
+      "olhadinha"
+    ).textContent = olhadinha;
+
+    document.getElementById(
+      "botaoResultado"
+    ).textContent = tamanho;
+
+
+    const resultado =
+      document.getElementById("resultado");
+
+    resultado.classList.add("ativo");
+
+
+    resultado.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  }
+);
+
+</script>
+
+</body>
+</html>
