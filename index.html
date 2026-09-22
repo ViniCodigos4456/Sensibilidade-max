@@ -16,29 +16,39 @@ body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   color: white;
+
   background:
-    radial-gradient(circle at top, #168cff55, transparent 35%),
-    linear-gradient(135deg, #02050d, #061a38, #09001d);
+    linear-gradient(rgba(0, 4, 15, .58), rgba(3, 0, 20, .72)),
+    url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=80")
+    center/cover fixed no-repeat;
 }
 
+/* CAMADA AZUL */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background:
-    linear-gradient(#0008, #0008),
-    url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=80")
-    center/cover;
-  opacity: .18;
-  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 119, 255, .28),
+    rgba(0, 0, 50, .35),
+    rgba(90, 0, 255, .25)
+  );
+  pointer-events: none;
 }
 
 .container {
+  position: relative;
+  z-index: 2;
+
   width: 92%;
   max-width: 600px;
+
   margin: auto;
   padding: 30px 0 50px;
 }
+
+/* TÍTULO */
 
 .logo {
   text-align: center;
@@ -47,76 +57,130 @@ body::before {
 
 .logo h1 {
   margin: 0;
-  font-size: 42px;
+
+  font-size: 43px;
   font-weight: 900;
-  letter-spacing: 3px;
-  text-shadow: 0 0 18px #168cff;
+  letter-spacing: 4px;
+
+  color: white;
+
+  text-shadow:
+    0 0 8px #00aaff,
+    0 0 20px #008cff,
+    0 0 40px #0066ff;
 }
 
 .logo p {
   margin-top: 8px;
-  color: #8dcaff;
+
+  color: #91d8ff;
   font-size: 14px;
+  letter-spacing: 1px;
 }
 
+/* CARDS */
+
 .card {
-  background: rgba(4, 14, 35, .78);
-  border: 1px solid rgba(55, 157, 255, .25);
+  background: rgba(3, 13, 34, .74);
+
+  border: 1px solid rgba(52, 160, 255, .30);
+
   border-radius: 22px;
+
   padding: 20px;
+
   margin-bottom: 17px;
-  box-shadow: 0 10px 35px #0008;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, .65),
+    inset 0 0 25px rgba(0, 130, 255, .05);
+
   backdrop-filter: blur(12px);
 }
 
 label {
   display: block;
+
   margin-bottom: 10px;
+
   font-size: 15px;
   font-weight: bold;
-  color: #dceeff;
+
+  color: #dff4ff;
 }
 
 select,
 input {
   width: 100%;
   height: 55px;
-  border: 1px solid #ffffff20;
+
+  border: 1px solid rgba(255,255,255,.12);
+
   border-radius: 14px;
+
   padding: 0 16px;
+
   font-size: 16px;
+
   color: white;
-  background: #071a36;
+
+  background: rgba(5, 24, 50, .92);
+
   outline: none;
 }
 
 select:focus,
 input:focus {
-  border-color: #168cff;
-  box-shadow: 0 0 12px #168cff55;
+  border-color: #139cff;
+
+  box-shadow:
+    0 0 10px rgba(0, 153, 255, .45);
 }
+
+/* BOTÃO */
 
 button {
   width: 100%;
-  height: 58px;
+  height: 60px;
+
   border: none;
-  border-radius: 15px;
-  background: linear-gradient(90deg, #087cff, #19b5ff);
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #006cff,
+      #00aaff,
+      #006cff
+    );
+
+  background-size: 200%;
+
   color: white;
+
   font-size: 17px;
   font-weight: 900;
+
   cursor: pointer;
-  box-shadow: 0 0 22px #078cff66;
+
+  box-shadow:
+    0 0 18px rgba(0, 145, 255, .55);
+
   transition: .2s;
 }
 
-button:active {
-  transform: scale(.97);
+button:hover {
+  background-position: right;
+
+  box-shadow:
+    0 0 30px rgba(0, 170, 255, .85);
 }
 
-button:hover {
-  box-shadow: 0 0 30px #078cffaa;
+button:active {
+  transform: scale(.96);
 }
+
+/* RESULTADO */
 
 .resultado {
   display: none;
@@ -124,13 +188,15 @@ button:hover {
 
 .resultado.ativo {
   display: block;
-  animation: aparecer .35s ease;
+
+  animation:
+    aparecer .4s ease;
 }
 
 @keyframes aparecer {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(15px);
   }
 
   to {
@@ -141,7 +207,11 @@ button:hover {
 
 .resultado h2 {
   margin-top: 0;
-  color: #59c5ff;
+
+  color: #62caff;
+
+  text-shadow:
+    0 0 10px rgba(0, 170, 255, .5);
 }
 
 .sensi {
@@ -151,261 +221,29 @@ button:hover {
 
 .sensi div {
   display: flex;
+
   justify-content: space-between;
-  padding: 13px 14px;
+  align-items: center;
+
+  padding: 14px;
+
   border-radius: 12px;
-  background: #ffffff09;
-  border: 1px solid #ffffff0d;
+
+  background: rgba(255,255,255,.055);
+
+  border: 1px solid rgba(255,255,255,.08);
 }
 
 .sensi strong {
-  color: #7bcfff;
+  color: #69cfff;
+
+  font-size: 17px;
+
+  text-shadow:
+    0 0 8px rgba(0, 170, 255, .5);
 }
 
 .info {
   text-align: center;
-  color: #7892ad;
-  font-size: 12px;
-  margin-top: 25px;
-}
-</style>
-</head>
 
-<body>
-
-<div class="container">
-
-  <div class="logo">
-    <h1>SENSI FF</h1>
-    <p>Gerador de sensibilidade</p>
-  </div>
-
-  <div class="card">
-    <label for="celular">CELULAR</label>
-
-    <select id="celular">
-      <option>Redmi Note 11</option>
-      <option>Redmi Note 12</option>
-      <option>Redmi Note 13</option>
-      <option>POCO X3 Pro</option>
-      <option>POCO X5 Pro</option>
-      <option>Samsung A14</option>
-      <option>Samsung A24</option>
-      <option>Samsung A34</option>
-      <option>Samsung S21</option>
-      <option>iPhone 11</option>
-      <option>iPhone 12</option>
-      <option>iPhone 13</option>
-      <option>iPhone 14</option>
-      <option>iPhone 15</option>
-    </select>
-  </div>
-
-  <div class="card">
-    <label for="modo">MODO</label>
-
-    <select id="modo">
-      <option>Alta</option>
-      <option>Padrão</option>
-      <option>Capa</option>
-      <option>Lisa</option>
-    </select>
-  </div>
-
-  <div class="card">
-    <label for="botao">TAMANHO DO BOTÃO</label>
-
-    <input
-      id="botao"
-      type="number"
-      min="1"
-      max="100"
-      value="50"
-    >
-  </div>
-
-  <div class="card">
-    <button id="gerar">GERAR SENSI</button>
-  </div>
-
-  <div id="resultado" class="card resultado">
-
-    <h2 id="tituloResultado">Redmi Note 11</h2>
-
-    <div class="sensi">
-
-      <div>
-        <span>Geral</span>
-        <strong id="geral">200</strong>
-      </div>
-
-      <div>
-        <span>Ponto Vermelho</span>
-        <strong id="red">170</strong>
-      </div>
-
-      <div>
-        <span>Mira 2x</span>
-        <strong id="mira2">190</strong>
-      </div>
-
-      <div>
-        <span>Mira 4x</span>
-        <strong id="mira4">170</strong>
-      </div>
-
-      <div>
-        <span>AWM</span>
-        <strong id="awm">20</strong>
-      </div>
-
-      <div>
-        <span>Olhadinha</span>
-        <strong id="olhadinha">100</strong>
-      </div>
-
-      <div>
-        <span>Tamanho do botão</span>
-        <strong id="resultadoBotao">50</strong>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="info">
-    Sensi gerada para configuração do jogador.
-  </div>
-
-</div>
-
-<script>
-
-const botaoGerar = document.getElementById("gerar");
-
-botaoGerar.addEventListener("click", function() {
-
-  const celular = document.getElementById("celular").value;
-  const modo = document.getElementById("modo").value;
-
-  let tamanho = Number(
-    document.getElementById("botao").value
-  );
-
-  if (isNaN(tamanho) || tamanho < 1) {
-    tamanho = 50;
-  }
-
-  if (tamanho > 100) {
-    tamanho = 100;
-  }
-
-  /*
-    Configuração base.
-    Redmi Note 11 mantém a sensi que você já tinha.
-  */
-
-  let geral = 200;
-  let red = 170;
-  let mira2 = 190;
-  let mira4 = 170;
-  let awm = 20;
-  let olhadinha = 100;
-
-  /*
-    Pequenas variações para os outros aparelhos.
-  */
-
-  if (celular.includes("iPhone")) {
-
-    geral = 195;
-    red = 165;
-    mira2 = 185;
-    mira4 = 165;
-    awm = 25;
-    olhadinha = 100;
-
-  } else if (celular.includes("Samsung")) {
-
-    geral = 198;
-    red = 168;
-    mira2 = 188;
-    mira4 = 168;
-    awm = 22;
-    olhadinha = 100;
-
-  } else if (celular.includes("POCO")) {
-
-    geral = 200;
-    red = 175;
-    mira2 = 195;
-    mira4 = 175;
-    awm = 20;
-    olhadinha = 100;
-  }
-
-  /*
-    Ajustes pelo modo.
-  */
-
-  if (modo === "Padrão") {
-
-    geral -= 5;
-    red -= 5;
-    mira2 -= 5;
-    mira4 -= 5;
-
-  }
-
-  if (modo === "Capa") {
-
-    geral = Math.min(200, geral + 5);
-    red = Math.min(200, red + 5);
-    mira2 = Math.min(200, mira2 + 3);
-
-  }
-
-  if (modo === "Lisa") {
-
-    geral -= 8;
-    red -= 8;
-    mira2 -= 8;
-    mira4 -= 8;
-  }
-
-  document.getElementById("tituloResultado").textContent =
-    celular;
-
-  document.getElementById("geral").textContent =
-    geral;
-
-  document.getElementById("red").textContent =
-    red;
-
-  document.getElementById("mira2").textContent =
-    mira2;
-
-  document.getElementById("mira4").textContent =
-    mira4;
-
-  document.getElementById("awm").textContent =
-    awm;
-
-  document.getElementById("olhadinha").textContent =
-    olhadinha;
-
-  document.getElementById("resultadoBotao").textContent =
-    tamanho;
-
-  document.getElementById("resultado").classList.add("ativo");
-
-  document.getElementById("resultado").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-
-});
-
-</script>
-
-</body>
-</html>
+ 
