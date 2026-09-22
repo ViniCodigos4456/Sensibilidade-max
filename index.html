@@ -3,120 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#06152b">
 <title>Sensi FF</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
-margin:0;
-min-height:100vh;
-font-family:Arial,sans-serif;
-color:white;
-background:
-linear-gradient(90deg,rgba(2,6,18,.88),rgba(2,10,30,.55),rgba(2,6,18,.88)),
-url("killua.jpg") center top/cover fixed no-repeat;
+* {
+  box-sizing: border-box;
 }
 
-.container{
-width:92%;
-max-width:650px;
-margin:auto;
-padding:30px 0 50px;
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2, 6, 18, .93),
+      rgba(2, 10, 30, .68),
+      rgba(2, 6, 18, .93)
+    ),
+    url("killua.jpg") center top / cover fixed no-repeat;
+
+  overflow-x: hidden;
 }
 
-.logo{
-text-align:center;
-font-size:50px;
-font-weight:bold;
-letter-spacing:3px;
-text-shadow:0 0 18px #00aaff;
+.container {
+  width: 92%;
+  max-width: 650px;
+  margin: auto;
+  padding: 35px 0 50px;
 }
 
-.subtitle{
-text-align:center;
-color:#8bdcff;
-margin:5px 0 30px;
+.logo {
+  text-align: center;
+  font-size: 52px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px #00aaff;
 }
 
-.card{
-background:rgba(3,20,43,.84);
-border:1px solid rgba(0,170,255,.45);
-border-radius:25px;
-padding:24px;
-margin-bottom:18px;
-box-shadow:0 0 20px rgba(0,130,255,.15);
-backdrop-filter:blur(6px);
+.subtitle {
+  text-align: center;
+  color: #8bdcff;
+  font-size: 17px;
+  margin-top: 5px;
+  margin-bottom: 35px;
 }
 
-label{
-display:block;
-font-size:18px;
-font-weight:bold;
-margin-bottom:12px;
+.card {
+  background: rgba(3, 20, 43, .82);
+  border: 1px solid rgba(0, 170, 255, .45);
+  border-radius: 28px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0, 130, 255, .12);
+  backdrop-filter: blur(6px);
 }
 
-input,select{
-width:100%;
-padding:17px;
-border-radius:15px;
-border:1px solid #174d77;
-background:#061b34;
-color:white;
-font-size:17px;
-outline:none;
+label {
+  display: block;
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
-button{
-width:100%;
-padding:19px;
-border:0;
-border-radius:17px;
-color:white;
-font-size:20px;
-font-weight:bold;
-background:linear-gradient(90deg,#087cff,#00c8ff);
-box-shadow:0 0 20px rgba(0,170,255,.45);
+input,
+select {
+  width: 100%;
+  padding: 18px;
+  border-radius: 17px;
+  border: 1px solid #174d77;
+  background: #061b34;
+  color: white;
+  font-size: 17px;
+  outline: none;
 }
 
-.result{display:none}
-
-.result h2{
-text-align:center;
-color:#59d7ff;
+input:focus,
+select:focus {
+  border-color: #00aaff;
+  box-shadow: 0 0 10px rgba(0,170,255,.3);
 }
 
-.sensi{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
+.search {
+  position: relative;
 }
 
-.item{
-background:rgba(2,12,27,.8);
-border:1px solid #14547e;
-border-radius:15px;
-padding:15px;
+.search span {
+  position: absolute;
+  left: 20px;
+  top: 17px;
+  font-size: 23px;
+  color: #52caff;
 }
 
-.item strong{
-display:block;
-color:#8bdcff;
-font-size:13px;
-margin-bottom:5px;
+.search input {
+  padding-left: 55px;
 }
 
-.item span{
-font-size:22px;
-font-weight:bold;
+button {
+  width: 100%;
+  padding: 20px;
+  border: none;
+  border-radius: 18px;
+  color: white;
+  font-size: 21px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #087cff, #00c8ff);
+  box-shadow: 0 0 20px rgba(0,170,255,.45);
+  cursor: pointer;
 }
 
-.info{
-text-align:center;
-color:#8495a8;
-font-size:13px;
-margin-top:25px;
+button:active {
+  transform: scale(.98);
+}
+
+.result {
+  display: none;
+}
+
+.result h2 {
+  text-align: center;
+  color: #59d7ff;
+  margin-top: 0;
+}
+
+.sensi {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.item {
+  background: rgba(2, 12, 27, .8);
+  border: 1px solid #14547e;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.item strong {
+  display: block;
+  color: #8bdcff;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.item span {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.info {
+  text-align: center;
+  color: #8495a8;
+  font-size: 13px;
+  margin-top: 30px;
+}
+
+@media(max-width: 450px) {
+  .logo {
+    font-size: 43px;
+  }
+
+  .container {
+    width: 94%;
+  }
+
+  .card {
+    padding: 22px;
+  }
 }
 </style>
 </head>
@@ -125,176 +181,285 @@ margin-top:25px;
 
 <div class="container">
 
-<div class="logo">SENSI FF</div>
-<div class="subtitle">GERADOR DE SENSIBILIDADE</div>
+  <div class="logo">SENSI FF</div>
+  <div class="subtitle">GERADOR DE SENSIBILIDADE</div>
 
-<div class="card">
-<label>CELULAR</label>
-<input id="celular" list="celulares" placeholder="Pesquisar celular...">
+  <!-- CELULAR -->
+  <div class="card">
+    <label>CELULAR</label>
 
-<datalist id="celulares">
-<option value="Redmi Note 11">
-<option value="Redmi Note 12">
-<option value="Redmi Note 13">
-<option value="Samsung Galaxy A15">
-<option value="Samsung Galaxy A24">
-<option value="Samsung Galaxy A34">
-<option value="Samsung Galaxy A54">
-<option value="Samsung Galaxy S23">
-<option value="Moto G23">
-<option value="Moto G54">
-<option value="iPhone 11">
-<option value="iPhone 12">
-<option value="iPhone 13">
-<option value="iPhone 14">
-<option value="iPhone 15">
-<option value="Realme C55">
-<option value="Realme C67">
-<option value="POCO X3">
-<option value="POCO X5 Pro">
-<option value="POCO X6">
-</datalist>
-</div>
+    <div class="search">
+      <span>⌕</span>
+      <input
+        id="celular"
+        list="celulares"
+        placeholder="Pesquisar celular..."
+      >
+    </div>
 
-<div class="card">
-<label>ESTILO</label>
+    <datalist id="celulares">
+      <option value="Redmi Note 11">
+      <option value="Redmi Note 12">
+      <option value="Redmi Note 13">
+      <option value="Redmi Note 14">
+      <option value="POCO X3">
+      <option value="POCO X5 Pro">
+      <option value="POCO X6">
+      <option value="POCO F5">
 
-<select id="modo">
-<option>Alta</option>
-<option>Padrão</option>
-<option>Capa</option>
-<option>Lisa</option>
-<option>Rush</option>
-<option>X1</option>
-</select>
-</div>
+      <option value="Samsung Galaxy A05">
+      <option value="Samsung Galaxy A14">
+      <option value="Samsung Galaxy A15">
+      <option value="Samsung Galaxy A24">
+      <option value="Samsung Galaxy A34">
+      <option value="Samsung Galaxy A54">
+      <option value="Samsung Galaxy S23">
+      <option value="Samsung Galaxy S24">
 
-<div class="card">
-<label>TAMANHO DO BOTÃO</label>
-<input id="botao" type="number" min="1" max="100" value="50">
-</div>
+      <option value="Moto G23">
+      <option value="Moto G24">
+      <option value="Moto G32">
+      <option value="Moto G54">
+      <option value="Moto G84">
 
-<div class="card">
-<button onclick="gerarSensi()">GERAR SENSI</button>
-</div>
+      <option value="iPhone 11">
+      <option value="iPhone 12">
+      <option value="iPhone 13">
+      <option value="iPhone 14">
+      <option value="iPhone 15">
+      <option value="iPhone 16">
 
-<div class="card result" id="resultado">
+      <option value="Realme C35">
+      <option value="Realme C55">
+      <option value="Realme C67">
+      <option value="Realme 10">
+      <option value="Realme 11">
+      <option value="Realme 12">
 
-<h2>SENSIBILIDADE GERADA</h2>
+      <option value="ASUS ROG Phone 6">
+      <option value="ASUS ROG Phone 7">
+      <option value="OnePlus 11">
+      <option value="Google Pixel 8">
+      <option value="Infinix Hot 30">
+      <option value="Infinix Hot 40">
+      <option value="Tecno Pova 5">
+      <option value="Tecno Pova 6">
+    </datalist>
+  </div>
 
-<div class="sensi">
+  <!-- MODO -->
+  <div class="card">
+    <label>MODO</label>
 
-<div class="item">
-<strong>GERAL</strong>
-<span id="geral">200</span>
-</div>
+    <select id="modo">
+      <option>Alta</option>
+      <option>Padrão</option>
+      <option>Capa</option>
+      <option>Lisa</option>
+      <option>AP</option>
+      <option>Rush</option>
+      <option>X1</option>
+    </select>
+  </div>
 
-<div class="item">
-<strong>PONTO VERMELHO</strong>
-<span id="red">170</span>
-</div>
+  <!-- ARMA -->
+  <div class="card">
+    <label>FOCO DA ARMA</label>
 
-<div class="item">
-<strong>MIRA 2X</strong>
-<span id="mira2">190</span>
-</div>
+    <select id="arma">
+      <option>Geral</option>
+      <option>M1014</option>
+      <option>UMP</option>
+      <option>Desert</option>
+      <option>XM8</option>
+      <option>AWM</option>
+    </select>
+  </div>
 
-<div class="item">
-<strong>MIRA 4X</strong>
-<span id="mira4">170</span>
-</div>
+  <!-- BOTÃO -->
+  <div class="card">
+    <label>TAMANHO DO BOTÃO</label>
 
-<div class="item">
-<strong>AWM</strong>
-<span id="awm">20</span>
-</div>
+    <input
+      id="botao"
+      type="number"
+      min="1"
+      max="100"
+      value="50"
+      placeholder="Ex: 50"
+    >
+  </div>
 
-<div class="item">
-<strong>OLHADINHA</strong>
-<span id="olhadinha">100</span>
-</div>
+  <!-- GERAR -->
+  <div class="card">
+    <button onclick="gerarSensi()">GERAR SENSI</button>
+  </div>
 
-</div>
-</div>
+  <!-- RESULTADO -->
+  <div class="card result" id="resultado">
 
-<div class="info">
-Configuração fictícia e não oficial do Free Fire.
-</div>
+    <h2>SENSIBILIDADE GERADA</h2>
+
+    <div class="sensi">
+
+      <div class="item">
+        <strong>GERAL</strong>
+        <span id="geral">200</span>
+      </div>
+
+      <div class="item">
+        <strong>PONTO VERMELHO</strong>
+        <span id="red">170</span>
+      </div>
+
+      <div class="item">
+        <strong>MIRA 2X</strong>
+        <span id="mira2">190</span>
+      </div>
+
+      <div class="item">
+        <strong>MIRA 4X</strong>
+        <span id="mira4">170</span>
+      </div>
+
+      <div class="item">
+        <strong>AWM</strong>
+        <span id="awm">20</span>
+      </div>
+
+      <div class="item">
+        <strong>OLHADINHA</strong>
+        <span id="olhadinha">100</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="info">
+    Configuração fictícia e não oficial do Free Fire.
+  </div>
 
 </div>
 
 <script>
 
-function aleatorio(min,max){
-return Math.floor(Math.random()*(max-min+1))+min;
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function gerarSensi(){
+function gerarSensi() {
 
-let celular=document.getElementById("celular").value.toLowerCase();
-let modo=document.getElementById("modo").value;
+  const celular =
+    document.getElementById("celular").value;
 
-let geral=200;
-let red=170;
-let mira2=190;
-let mira4=170;
-let awm=20;
-let olhadinha=100;
+  const modo =
+    document.getElementById("modo").value;
 
-if(celular.includes("redmi note 11")){
-geral=200;
-red=170;
-mira2=190;
-mira4=170;
-awm=20;
-olhadinha=100;
-}else{
-geral=aleatorio(180,200);
-red=aleatorio(150,180);
-mira2=aleatorio(170,195);
-mira4=aleatorio(150,180);
-awm=aleatorio(15,30);
-olhadinha=aleatorio(80,100);
-}
+  const arma =
+    document.getElementById("arma").value;
 
-if(modo==="Capa"){
-geral=Math.min(200,geral+5);
-red=Math.min(200,red+5);
-}
+  let geral = 200;
+  let red = 170;
+  let mira2 = 190;
+  let mira4 = 170;
+  let awm = 20;
+  let olhadinha = 100;
 
-if(modo==="Lisa"){
-geral=Math.max(150,geral-10);
-red=Math.max(130,red-10);
-}
+  /*
+    Redmi Note 11:
+    configuração base salva
+  */
 
-if(modo==="Rush"){
-geral=Math.min(200,geral+8);
-red=Math.min(200,red+8);
-}
+  if (celular.toLowerCase().includes("redmi note 11")) {
 
-if(modo==="X1"){
-geral=Math.min(200,geral+4);
-red=Math.min(200,red+4);
-}
+    geral = 200;
+    red = 170;
+    mira2 = 190;
+    mira4 = 170;
+    awm = 20;
+    olhadinha = 100;
 
-if(modo==="Padrão"){
-geral=aleatorio(170,190);
-red=aleatorio(150,175);
-}
+  } else {
 
-document.getElementById("geral").textContent=geral;
-document.getElementById("red").textContent=red;
-document.getElementById("mira2").textContent=mira2;
-document.getElementById("mira4").textContent=mira4;
-document.getElementById("awm").textContent=awm;
-document.getElementById("olhadinha").textContent=olhadinha;
+    geral = aleatorio(180, 200);
+    red = aleatorio(150, 180);
+    mira2 = aleatorio(170, 195);
+    mira4 = aleatorio(150, 180);
+    awm = aleatorio(15, 30);
+    olhadinha = aleatorio(80, 100);
+  }
 
-document.getElementById("resultado").style.display="block";
+  /* Ajustes por modo */
 
-document.getElementById("resultado").scrollIntoView({
-behavior:"smooth"
-});
+  if (modo === "Capa") {
+    geral = Math.min(200, geral + 5);
+    red = Math.min(200, red + 5);
+  }
 
+  if (modo === "Lisa") {
+    geral = Math.max(150, geral - 10);
+    red = Math.max(130, red - 10);
+  }
+
+  if (modo === "Rush") {
+    geral = Math.min(200, geral + 8);
+    red = Math.min(200, red + 8);
+  }
+
+  if (modo === "X1") {
+    geral = Math.min(200, geral + 4);
+    red = Math.min(200, red + 4);
+  }
+
+  if (modo === "Padrão") {
+    geral = aleatorio(170, 190);
+    red = aleatorio(150, 175);
+  }
+
+  if (modo === "AP") {
+    geral = aleatorio(185, 200);
+    red = aleatorio(160, 185);
+  }
+
+  /* Ajustes por arma */
+
+  if (arma === "M1014") {
+    geral = Math.min(200, geral + 5);
+    red = Math.min(200, red + 5);
+  }
+
+  if (arma === "UMP") {
+    mira2 = Math.min(200, mira2 + 5);
+  }
+
+  if (arma === "Desert") {
+    red = Math.min(200, red + 7);
+  }
+
+  if (arma === "XM8") {
+    mira2 = Math.min(200, mira2 + 8);
+    mira4 = Math.min(200, mira4 + 5);
+  }
+
+  if (arma === "AWM") {
+    awm = Math.min(100, awm + 5);
+  }
+
+  /* Mostrar resultado */
+
+  document.getElementById("geral").textContent = geral;
+  document.getElementById("red").textContent = red;
+  document.getElementById("mira2").textContent = mira2;
+  document.getElementById("mira4").textContent = mira4;
+  document.getElementById("awm").textContent = awm;
+  document.getElementById("olhadinha").textContent = olhadinha;
+
+  document.getElementById("resultado").style.display = "block";
+
+  document.getElementById("resultado")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
 }
 
 </script>
