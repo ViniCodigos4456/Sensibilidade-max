@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sensi FF</title>
 
 <style>
@@ -12,61 +13,160 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: Arial, sans-serif;
   color: white;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #07152f, #0b4fd3, #4720a8);
+  background:
+    radial-gradient(circle at top, #168cff55, transparent 35%),
+    linear-gradient(135deg, #02050d, #061a38, #09001d);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(#0008, #0008),
+    url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=80")
+    center/cover;
+  opacity: .18;
+  z-index: -1;
 }
 
 .container {
-  max-width: 500px;
+  width: 92%;
+  max-width: 600px;
   margin: auto;
-  padding: 25px 18px;
+  padding: 30px 0 50px;
 }
 
-h1 {
+.logo {
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 25px;
+  margin-bottom: 28px;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-shadow: 0 0 18px #168cff;
+}
+
+.logo p {
+  margin-top: 8px;
+  color: #8dcaff;
+  font-size: 14px;
 }
 
 .card {
-  background: rgba(0,0,0,0.45);
-  border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 15px;
+  background: rgba(4, 14, 35, .78);
+  border: 1px solid rgba(55, 157, 255, .25);
+  border-radius: 22px;
+  padding: 20px;
+  margin-bottom: 17px;
+  box-shadow: 0 10px 35px #0008;
+  backdrop-filter: blur(12px);
 }
 
 label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-size: 15px;
   font-weight: bold;
+  color: #dceeff;
 }
 
 select,
 input {
   width: 100%;
-  padding: 13px;
-  border: none;
-  border-radius: 10px;
+  height: 55px;
+  border: 1px solid #ffffff20;
+  border-radius: 14px;
+  padding: 0 16px;
   font-size: 16px;
+  color: white;
+  background: #071a36;
+  outline: none;
+}
+
+select:focus,
+input:focus {
+  border-color: #168cff;
+  box-shadow: 0 0 12px #168cff55;
 }
 
 button {
   width: 100%;
-  padding: 15px;
+  height: 58px;
   border: none;
-  border-radius: 12px;
-  background: #1683ff;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #087cff, #19b5ff);
   color: white;
   font-size: 17px;
-  font-weight: bold;
+  font-weight: 900;
   cursor: pointer;
+  box-shadow: 0 0 22px #078cff66;
+  transition: .2s;
 }
 
-#resultado {
-  margin-top: 18px;
-  line-height: 1.8;
+button:active {
+  transform: scale(.97);
+}
+
+button:hover {
+  box-shadow: 0 0 30px #078cffaa;
+}
+
+.resultado {
+  display: none;
+}
+
+.resultado.ativo {
+  display: block;
+  animation: aparecer .35s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resultado h2 {
+  margin-top: 0;
+  color: #59c5ff;
+}
+
+.sensi {
+  display: grid;
+  gap: 10px;
+}
+
+.sensi div {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 14px;
+  border-radius: 12px;
+  background: #ffffff09;
+  border: 1px solid #ffffff0d;
+}
+
+.sensi strong {
+  color: #7bcfff;
+}
+
+.info {
+  text-align: center;
+  color: #7892ad;
+  font-size: 12px;
+  margin-top: 25px;
 }
 </style>
 </head>
@@ -75,187 +175,235 @@ button {
 
 <div class="container">
 
-<h1>SENSI FF</h1>
+  <div class="logo">
+    <h1>SENSI FF</h1>
+    <p>Gerador de sensibilidade</p>
+  </div>
 
-<div class="card">
-<label for="celular">Celular</label>
+  <div class="card">
+    <label for="celular">CELULAR</label>
 
-<select id="celular">
-  <option>Redmi Note 11</option>
-  <option>Redmi Note 12</option>
-  <option>Redmi Note 13</option>
-  <option>Redmi Note 14</option>
-  <option>Redmi 12</option>
-  <option>Redmi 13</option>
-  <option>POCO X3 Pro</option>
-  <option>POCO X5 Pro</option>
-  <option>POCO X6</option>
-  <option>Samsung Galaxy A14</option>
-  <option>Samsung Galaxy A15</option>
-  <option>Samsung Galaxy A24</option>
-  <option>Samsung Galaxy A34</option>
-  <option>iPhone 11</option>
-  <option>iPhone 12</option>
-  <option>iPhone 13</option>
-  <option>iPhone 14</option>
-  <option>iPhone 15</option>
-  <option>Realme</option>
-  <option>Outro celular</option>
-</select>
-</div>
+    <select id="celular">
+      <option>Redmi Note 11</option>
+      <option>Redmi Note 12</option>
+      <option>Redmi Note 13</option>
+      <option>POCO X3 Pro</option>
+      <option>POCO X5 Pro</option>
+      <option>Samsung A14</option>
+      <option>Samsung A24</option>
+      <option>Samsung A34</option>
+      <option>Samsung S21</option>
+      <option>iPhone 11</option>
+      <option>iPhone 12</option>
+      <option>iPhone 13</option>
+      <option>iPhone 14</option>
+      <option>iPhone 15</option>
+    </select>
+  </div>
 
-<div class="card">
-<label for="modo">Modo</label>
+  <div class="card">
+    <label for="modo">MODO</label>
 
-<select id="modo">
-  <option>Alta</option>
-  <option>Padrão</option>
-</select>
-</div>
+    <select id="modo">
+      <option>Alta</option>
+      <option>Padrão</option>
+      <option>Capa</option>
+      <option>Lisa</option>
+    </select>
+  </div>
 
-<div class="card">
-<label for="botao">Tamanho do botão</label>
+  <div class="card">
+    <label for="botao">TAMANHO DO BOTÃO</label>
 
-<input id="botao" type="number" value="50" min="1" max="100">
-</div>
+    <input
+      id="botao"
+      type="number"
+      min="1"
+      max="100"
+      value="50"
+    >
+  </div>
 
-<div class="card">
+  <div class="card">
+    <button id="gerar">GERAR SENSI</button>
+  </div>
 
-<button type="button" onclick="gerarSensi()">
-GERAR SENSI
-</button>
+  <div id="resultado" class="card resultado">
 
-<div id="resultado"></div>
+    <h2 id="tituloResultado">Redmi Note 11</h2>
 
-</div>
+    <div class="sensi">
+
+      <div>
+        <span>Geral</span>
+        <strong id="geral">200</strong>
+      </div>
+
+      <div>
+        <span>Ponto Vermelho</span>
+        <strong id="red">170</strong>
+      </div>
+
+      <div>
+        <span>Mira 2x</span>
+        <strong id="mira2">190</strong>
+      </div>
+
+      <div>
+        <span>Mira 4x</span>
+        <strong id="mira4">170</strong>
+      </div>
+
+      <div>
+        <span>AWM</span>
+        <strong id="awm">20</strong>
+      </div>
+
+      <div>
+        <span>Olhadinha</span>
+        <strong id="olhadinha">100</strong>
+      </div>
+
+      <div>
+        <span>Tamanho do botão</span>
+        <strong id="resultadoBotao">50</strong>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="info">
+    Sensi gerada para configuração do jogador.
+  </div>
 
 </div>
 
 <script>
 
-const sensis = {
+const botaoGerar = document.getElementById("gerar");
 
-  "Redmi Note 11": {
-    Alta: [200,170,190,170,20,100],
-    Padrão: [196,150,182,165,20,100]
-  },
-
-  "Redmi Note 12": {
-    Alta: [198,168,188,168,20,100],
-    Padrão: [194,148,180,163,20,100]
-  },
-
-  "Redmi Note 13": {
-    Alta: [200,175,192,172,20,100],
-    Padrão: [196,155,184,167,20,100]
-  },
-
-  "Redmi Note 14": {
-    Alta: [200,178,194,175,20,100],
-    Padrão: [197,158,186,170,20,100]
-  },
-
-  "Redmi 12": {
-    Alta: [198,165,185,165,20,100],
-    Padrão: [194,145,178,160,20,100]
-  },
-
-  "Redmi 13": {
-    Alta: [200,172,190,170,20,100],
-    Padrão: [196,152,182,165,20,100]
-  },
-
-  "POCO X3 Pro": {
-    Alta: [200,180,195,175,20,100],
-    Padrão: [198,160,188,170,20,100]
-  },
-
-  "POCO X5 Pro": {
-    Alta: [200,182,196,178,20,100],
-    Padrão: [198,165,190,173,20,100]
-  },
-
-  "POCO X6": {
-    Alta: [200,185,198,180,20,100],
-    Padrão: [198,168,192,175,20,100]
-  },
-
-  "Samsung Galaxy A14": {
-    Alta: [198,165,185,165,20,100],
-    Padrão: [194,145,178,160,20,100]
-  },
-
-  "Samsung Galaxy A15": {
-    Alta: [200,170,188,168,20,100],
-    Padrão: [196,150,180,163,20,100]
-  },
-
-  "Samsung Galaxy A24": {
-    Alta: [200,175,192,172,20,100],
-    Padrão: [196,155,184,167,20,100]
-  },
-
-  "Samsung Galaxy A34": {
-    Alta: [200,180,195,175,20,100],
-    Padrão: [198,160,188,170,20,100]
-  },
-
-  "iPhone 11": {
-    Alta: [200,180,195,175,20,100],
-    Padrão: [198,160,188,170,20,100]
-  },
-
-  "iPhone 12": {
-    Alta: [200,185,198,180,20,100],
-    Padrão: [198,165,192,175,20,100]
-  },
-
-  "iPhone 13": {
-    Alta: [200,188,200,182,20,100],
-    Padrão: [198,170,194,178,20,100]
-  },
-
-  "iPhone 14": {
-    Alta: [200,190,200,185,20,100],
-    Padrão: [198,172,196,180,20,100]
-  },
-
-  "iPhone 15": {
-    Alta: [200,192,200,188,20,100],
-    Padrão: [200,175,198,183,20,100]
-  },
-
-  "Realme": {
-    Alta: [200,175,190,170,20,100],
-    Padrão: [196,155,182,165,20,100]
-  },
-
-  "Outro celular": {
-    Alta: [200,170,190,170,20,100],
-    Padrão: [196,150,182,165,20,100]
-  }
-
-};
-
-
-function gerarSensi() {
+botaoGerar.addEventListener("click", function() {
 
   const celular = document.getElementById("celular").value;
   const modo = document.getElementById("modo").value;
-  const botao = document.getElementById("botao").value;
 
-  const valores = sensis[celular][modo];
+  let tamanho = Number(
+    document.getElementById("botao").value
+  );
 
-  document.getElementById("resultado").innerHTML =
-    "<b>" + celular + "</b><br><br>" +
-    "Geral: " + valores[0] + "<br>" +
-    "Ponto Vermelho: " + valores[1] + "<br>" +
-    "Mira 2x: " + valores[2] + "<br>" +
-    "Mira 4x: " + valores[3] + "<br>" +
-    "AWM: " + valores[4] + "<br>" +
-    "Olhadinha: " + valores[5] + "<br>" +
-    "Tamanho do botão: " + botao;
-}
+  if (isNaN(tamanho) || tamanho < 1) {
+    tamanho = 50;
+  }
+
+  if (tamanho > 100) {
+    tamanho = 100;
+  }
+
+  /*
+    Configuração base.
+    Redmi Note 11 mantém a sensi que você já tinha.
+  */
+
+  let geral = 200;
+  let red = 170;
+  let mira2 = 190;
+  let mira4 = 170;
+  let awm = 20;
+  let olhadinha = 100;
+
+  /*
+    Pequenas variações para os outros aparelhos.
+  */
+
+  if (celular.includes("iPhone")) {
+
+    geral = 195;
+    red = 165;
+    mira2 = 185;
+    mira4 = 165;
+    awm = 25;
+    olhadinha = 100;
+
+  } else if (celular.includes("Samsung")) {
+
+    geral = 198;
+    red = 168;
+    mira2 = 188;
+    mira4 = 168;
+    awm = 22;
+    olhadinha = 100;
+
+  } else if (celular.includes("POCO")) {
+
+    geral = 200;
+    red = 175;
+    mira2 = 195;
+    mira4 = 175;
+    awm = 20;
+    olhadinha = 100;
+  }
+
+  /*
+    Ajustes pelo modo.
+  */
+
+  if (modo === "Padrão") {
+
+    geral -= 5;
+    red -= 5;
+    mira2 -= 5;
+    mira4 -= 5;
+
+  }
+
+  if (modo === "Capa") {
+
+    geral = Math.min(200, geral + 5);
+    red = Math.min(200, red + 5);
+    mira2 = Math.min(200, mira2 + 3);
+
+  }
+
+  if (modo === "Lisa") {
+
+    geral -= 8;
+    red -= 8;
+    mira2 -= 8;
+    mira4 -= 8;
+  }
+
+  document.getElementById("tituloResultado").textContent =
+    celular;
+
+  document.getElementById("geral").textContent =
+    geral;
+
+  document.getElementById("red").textContent =
+    red;
+
+  document.getElementById("mira2").textContent =
+    mira2;
+
+  document.getElementById("mira4").textContent =
+    mira4;
+
+  document.getElementById("awm").textContent =
+    awm;
+
+  document.getElementById("olhadinha").textContent =
+    olhadinha;
+
+  document.getElementById("resultadoBotao").textContent =
+    tamanho;
+
+  document.getElementById("resultado").classList.add("ativo");
+
+  document.getElementById("resultado").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+});
 
 </script>
 
