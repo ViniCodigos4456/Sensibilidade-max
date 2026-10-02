@@ -3,466 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sensi FF</title>
+<title>Sensibilidade Max</title>
 
 <style>
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  color: white;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(2, 6, 18, .93),
-      rgba(2, 10, 30, .68),
-      rgba(2, 6, 18, .93)
-    ),
-    url("killua.jpg") center top / cover fixed no-repeat;
-
-  overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(3,10,25,.82), rgba(2,6,18,.94)),
+        url("killua.png") center/cover fixed;
 }
 
 .container {
-  width: 92%;
-  max-width: 650px;
-  margin: auto;
-  padding: 35px 0 50px;
+    width: 92%;
+    max-width: 720px;
+    margin: auto;
+    padding: 30px 0 50px;
 }
 
-.logo {
-  text-align: center;
-  font-size: 52px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-shadow: 0 0 15px #00aaff;
+/* TOPO */
+.top {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 9px 17px;
+    border: 1px solid #3b82f6;
+    border-radius: 30px;
+    background: rgba(20,30,70,.65);
+    color: #60d5ff;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+h1 span {
+    color: #18cfff;
 }
 
 .subtitle {
-  text-align: center;
-  color: #8bdcff;
-  font-size: 17px;
-  margin-top: 5px;
-  margin-bottom: 35px;
+    color: #aebbd0;
+    font-size: 15px;
 }
 
+/* CONTADORES */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.stat {
+    padding: 18px 8px;
+    text-align: center;
+    border: 1px solid #164d78;
+    border-radius: 18px;
+    background: rgba(5,18,40,.75);
+}
+
+.stat strong {
+    display: block;
+    font-size: 22px;
+}
+
+.stat small {
+    color: #8193ac;
+}
+
+/* CARD */
 .card {
-  background: rgba(3, 20, 43, .82);
-  border: 1px solid rgba(0, 170, 255, .45);
-  border-radius: 28px;
-  padding: 28px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 20px rgba(0, 130, 255, .12);
-  backdrop-filter: blur(6px);
+    background: rgba(4,20,43,.82);
+    border: 1px solid #0877bd;
+    border-radius: 25px;
+    padding: 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 0 25px rgba(0,130,255,.12);
 }
 
-label {
-  display: block;
-  font-size: 19px;
-  font-weight: bold;
-  margin-bottom: 15px;
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
-input,
-select {
-  width: 100%;
-  padding: 18px;
-  border-radius: 17px;
-  border: 1px solid #174d77;
-  background: #061b34;
-  color: white;
-  font-size: 17px;
-  outline: none;
+input, select {
+    width: 100%;
+    padding: 17px;
+    border-radius: 15px;
+    border: 1px solid #185b88;
+    background: #071d37;
+    color: white;
+    font-size: 16px;
+    outline: none;
 }
 
-input:focus,
-select:focus {
-  border-color: #00aaff;
-  box-shadow: 0 0 10px rgba(0,170,255,.3);
+input:focus, select:focus {
+    border-color: #13cfff;
+    box-shadow: 0 0 12px rgba(19,207,255,.25);
 }
 
-.search {
-  position: relative;
+/* MARCAS */
+.brands {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 5px;
 }
 
-.search span {
-  position: absolute;
-  left: 20px;
-  top: 17px;
-  font-size: 23px;
-  color: #52caff;
+.brand {
+    flex: 0 0 auto;
+    padding: 12px 16px;
+    border-radius: 13px;
+    border: 1px solid #294867;
+    background: #0a1c34;
+    color: #b9c8da;
+    cursor: pointer;
 }
 
-.search input {
-  padding-left: 55px;
+.brand.active {
+    background: linear-gradient(135deg,#624cff,#00cfff);
+    color: white;
+    border-color: #4bcfff;
 }
 
+/* ESTILOS */
+.modes {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+}
+
+.mode {
+    text-align: center;
+    padding: 20px 8px;
+    border: 1px solid #294867;
+    border-radius: 17px;
+    background: #081a31;
+    cursor: pointer;
+}
+
+.mode span {
+    display: block;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.mode.active {
+    border-color: #15cfff;
+    background: linear-gradient(145deg,#15245c,#073b59);
+    box-shadow: 0 0 18px rgba(0,190,255,.2);
+}
+
+/* BOTÕES */
 button {
-  width: 100%;
-  padding: 20px;
-  border: none;
-  border-radius: 18px;
-  color: white;
-  font-size: 21px;
-  font-weight: bold;
-  background: linear-gradient(90deg, #087cff, #00c8ff);
-  box-shadow: 0 0 20px rgba(0,170,255,.45);
-  cursor: pointer;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
-button:active {
-  transform: scale(.98);
+.detect {
+    width: 100%;
+    margin-top: 12px;
+    padding: 16px;
+    border-radius: 15px;
+    background: #102743;
+    border: 1px solid #31516e;
+    font-size: 15px;
 }
 
-.result {
-  display: none;
+.generate {
+    width: 100%;
+    padding: 20px;
+    border-radius: 18px;
+    font-size: 19px;
+    font-weight: bold;
+    background: linear-gradient(90deg,#604cff,#09cfff);
+    box-shadow: 0 0 25px rgba(0,180,255,.25);
 }
 
-.result h2 {
-  text-align: center;
-  color: #59d7ff;
-  margin-top: 0;
+.generate:active {
+    transform: scale(.98);
+}
+
+/* RESULTADO */
+#resultado {
+    display: none;
+}
+
+.sensi-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .sensi {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+    padding: 17px;
+    border-radius: 14px;
+    background: #071b33;
+    border: 1px solid #17547e;
+    text-align: center;
 }
 
-.item {
-  background: rgba(2, 12, 27, .8);
-  border: 1px solid #14547e;
-  border-radius: 15px;
-  padding: 15px;
+.sensi strong {
+    display: block;
+    font-size: 25px;
+    color: #20d4ff;
+    margin-top: 5px;
 }
 
-.item strong {
-  display: block;
-  color: #8bdcff;
-  font-size: 14px;
-  margin-bottom: 5px;
+/* DICAS */
+.dicas {
+    margin-top: 20px;
 }
 
-.item span {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.info {
-  text-align: center;
-  color: #8495a8;
-  font-size: 13px;
-  margin-top: 30px;
-}
-
-@media(max-width: 450px) {
-  .logo {
-    font-size: 43px;
-  }
-
-  .container {
-    width: 94%;
-  }
-
-  .card {
-    padding: 22px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <div class="logo">SENSI FF</div>
-  <div class="subtitle">GERADOR DE SENSIBILIDADE</div>
-
-  <!-- CELULAR -->
-  <div class="card">
-    <label>CELULAR</label>
-
-    <div class="search">
-      <span>⌕</span>
-      <input
-        id="celular"
-        list="celulares"
-        placeholder="Pesquisar celular..."
-      >
-    </div>
-
-    <datalist id="celulares">
-      <option value="Redmi Note 11">
-      <option value="Redmi Note 12">
-      <option value="Redmi Note 13">
-      <option value="Redmi Note 14">
-      <option value="POCO X3">
-      <option value="POCO X5 Pro">
-      <option value="POCO X6">
-      <option value="POCO F5">
-
-      <option value="Samsung Galaxy A05">
-      <option value="Samsung Galaxy A14">
-      <option value="Samsung Galaxy A15">
-      <option value="Samsung Galaxy A24">
-      <option value="Samsung Galaxy A34">
-      <option value="Samsung Galaxy A54">
-      <option value="Samsung Galaxy S23">
-      <option value="Samsung Galaxy S24">
-
-      <option value="Moto G23">
-      <option value="Moto G24">
-      <option value="Moto G32">
-      <option value="Moto G54">
-      <option value="Moto G84">
-
-      <option value="iPhone 11">
-      <option value="iPhone 12">
-      <option value="iPhone 13">
-      <option value="iPhone 14">
-      <option value="iPhone 15">
-      <option value="iPhone 16">
-
-      <option value="Realme C35">
-      <option value="Realme C55">
-      <option value="Realme C67">
-      <option value="Realme 10">
-      <option value="Realme 11">
-      <option value="Realme 12">
-
-      <option value="ASUS ROG Phone 6">
-      <option value="ASUS ROG Phone 7">
-      <option value="OnePlus 11">
-      <option value="Google Pixel 8">
-      <option value="Infinix Hot 30">
-      <option value="Infinix Hot 40">
-      <option value="Tecno Pova 5">
-      <option value="Tecno Pova 6">
-    </datalist>
-  </div>
-
-  <!-- MODO -->
-  <div class="card">
-    <label>MODO</label>
-
-    <select id="modo">
-      <option>Alta</option>
-      <option>Padrão</option>
-      <option>Capa</option>
-      <option>Lisa</option>
-      <option>AP</option>
-      <option>Rush</option>
-      <option>X1</option>
-    </select>
-  </div>
-
-  <!-- ARMA -->
-  <div class="card">
-    <label>FOCO DA ARMA</label>
-
-    <select id="arma">
-      <option>Geral</option>
-      <option>M1014</option>
-      <option>UMP</option>
-      <option>Desert</option>
-      <option>XM8</option>
-      <option>AWM</option>
-    </select>
-  </div>
-
-  <!-- BOTÃO -->
-  <div class="card">
-    <label>TAMANHO DO BOTÃO</label>
-
-    <input
-      id="botao"
-      type="number"
-      min="1"
-      max="100"
-      value="50"
-      placeholder="Ex: 50"
-    >
-  </div>
-
-  <!-- GERAR -->
-  <div class="card">
-    <button onclick="gerarSensi()">GERAR SENSI</button>
-  </div>
-
-  <!-- RESULTADO -->
-  <div class="card result" id="resultado">
-
-    <h2>SENSIBILIDADE GERADA</h2>
-
-    <div class="sensi">
-
-      <div class="item">
-        <strong>GERAL</strong>
-        <span id="geral">200</span>
-      </div>
-
-      <div class="item">
-        <strong>PONTO VERMELHO</strong>
-        <span id="red">170</span>
-      </div>
-
-      <div class="item">
-        <strong>MIRA 2X</strong>
-        <span id="mira2">190</span>
-      </div>
-
-      <div class="item">
-        <strong>MIRA 4X</strong>
-        <span id="mira4">170</span>
-      </div>
-
-      <div class="item">
-        <strong>AWM</strong>
-        <span id="awm">20</span>
-      </div>
-
-      <div class="item">
-        <strong>OLHADINHA</strong>
-        <span id="olhadinha">100</span>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="info">
-    Configuração fictícia e não oficial do Free Fire.
-  </div>
-
-</div>
-
-<script>
-
-function aleatorio(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function gerarSensi() {
-
-  const celular =
-    document.getElementById("celular").value;
-
-  const modo =
-    document.getElementById("modo").value;
-
-  const arma =
-    document.getElementById("arma").value;
-
-  let geral = 200;
-  let red = 170;
-  let mira2 = 190;
-  let mira4 = 170;
-  let awm = 20;
-  let olhadinha = 100;
-
-  /*
-    Redmi Note 11:
-    configuração base salva
-  */
-
-  if (celular.toLowerCase().includes("redmi note 11")) {
-
-    geral = 200;
-    red = 170;
-    mira2 = 190;
-    mira4 = 170;
-    awm = 20;
-    olhadinha = 100;
-
-  } else {
-
-    geral = aleatorio(180, 200);
-    red = aleatorio(150, 180);
-    mira2 = aleatorio(170, 195);
-    mira4 = aleatorio(150, 180);
-    awm = aleatorio(15, 30);
-    olhadinha = aleatorio(80, 100);
-  }
-
-  /* Ajustes por modo */
-
-  if (modo === "Capa") {
-    geral = Math.min(200, geral + 5);
-    red = Math.min(200, red + 5);
-  }
-
-  if (modo === "Lisa") {
-    geral = Math.max(150, geral - 10);
-    red = Math.max(130, red - 10);
-  }
-
-  if (modo === "Rush") {
-    geral = Math.min(200, geral + 8);
-    red = Math.min(200, red + 8);
-  }
-
-  if (modo === "X1") {
-    geral = Math.min(200, geral + 4);
-    red = Math.min(200, red + 4);
-  }
-
-  if (modo === "Padrão") {
-    geral = aleatorio(170, 190);
-    red = aleatorio(150, 175);
-  }
-
-  if (modo === "AP") {
-    geral = aleatorio(185, 200);
-    red = aleatorio(160, 185);
-  }
-
-  /* Ajustes por arma */
-
-  if (arma === "M1014") {
-    geral = Math.min(200, geral + 5);
-    red = Math.min(200, red + 5);
-  }
-
-  if (arma === "UMP") {
-    mira2 = Math.min(200, mira2 + 5);
-  }
-
-  if (arma === "Desert") {
-    red = Math.min(200, red + 7);
-  }
-
-  if (arma === "XM8") {
-    mira2 = Math.min(200, mira2 + 8);
-    mira4 = Math.min(200, mira4 + 5);
-  }
-
-  if (arma === "AWM") {
-    awm = Math.min(100, awm + 5);
-  }
-
-  /* Mostrar resultado */
-
-  document.getElementById("geral").textContent = geral;
-  document.getElementById("red").textContent = red;
-  document.getElementById("mira2").textContent = mira2;
-  document.getElementById("mira4").textContent = mira4;
-  document.getElementById("awm").textContent = awm;
-  document.getElementById("olhadinha").textContent = olhadinha;
-
-  document.getElementById("resultado").style.display = "block";
-
-  document.getElementById("resultado")
-    .scrollIntoView({
-      behavior: "smooth"
-    });
-}
-
-</script>
-
-</body>
-</html>
+.dicas p {
+    color: #aebbd
