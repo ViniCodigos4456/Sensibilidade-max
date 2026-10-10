@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,230 +8,205 @@
 
 <style>
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    color: white;
-    min-height: 100vh;
-    background:
-        linear-gradient(rgba(3,10,25,.82), rgba(2,6,18,.94)),
-        url("killua.png") center/cover fixed;
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  background:
+    linear-gradient(
+      rgba(3, 8, 25, 0.55),
+      rgba(3, 8, 25, 0.88)
+    ),
+    url("killua.png") center center / cover fixed no-repeat;
+  background-color: #030819;
 }
 
 .container {
-    width: 92%;
-    max-width: 720px;
-    margin: auto;
-    padding: 30px 0 50px;
-}
-
-/* TOPO */
-.top {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.badge {
-    display: inline-block;
-    padding: 9px 17px;
-    border: 1px solid #3b82f6;
-    border-radius: 30px;
-    background: rgba(20,30,70,.65);
-    color: #60d5ff;
-    font-size: 13px;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
+  width: 90%;
+  max-width: 420px;
+  margin: auto;
+  padding: 30px 0;
 }
 
 h1 {
-    font-size: 42px;
-    margin-bottom: 8px;
+  text-align: center;
+  color: #38b6ff;
+  text-shadow: 0 0 15px #0077ff;
 }
 
-h1 span {
-    color: #18cfff;
+.subtitulo {
+  text-align: center;
+  color: #c9eaff;
 }
 
-.subtitle {
-    color: #aebbd0;
-    font-size: 15px;
-}
-
-/* CONTADORES */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin: 25px 0;
-}
-
-.stat {
-    padding: 18px 8px;
-    text-align: center;
-    border: 1px solid #164d78;
-    border-radius: 18px;
-    background: rgba(5,18,40,.75);
-}
-
-.stat strong {
-    display: block;
-    font-size: 22px;
-}
-
-.stat small {
-    color: #8193ac;
-}
-
-/* CARD */
 .card {
-    background: rgba(4,20,43,.82);
-    border: 1px solid #0877bd;
-    border-radius: 25px;
-    padding: 24px;
-    margin-bottom: 18px;
-    box-shadow: 0 0 25px rgba(0,130,255,.12);
+  margin-top: 22px;
+  padding: 20px;
+  border: 1px solid #168bff;
+  border-radius: 16px;
+  background: rgba(4, 12, 35, 0.85);
+  box-shadow: 0 0 18px rgba(0, 119, 255, 0.25);
 }
 
-.title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 7px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 13px;
+  border-radius: 9px;
+  border: 1px solid #278dff;
+  font-size: 16px;
 }
 
 input, select {
-    width: 100%;
-    padding: 17px;
-    border-radius: 15px;
-    border: 1px solid #185b88;
-    background: #071d37;
-    color: white;
-    font-size: 16px;
-    outline: none;
+  color: white;
+  background: #101d3a;
 }
 
-input:focus, select:focus {
-    border-color: #13cfff;
-    box-shadow: 0 0 12px rgba(19,207,255,.25);
-}
-
-/* MARCAS */
-.brands {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 5px;
-}
-
-.brand {
-    flex: 0 0 auto;
-    padding: 12px 16px;
-    border-radius: 13px;
-    border: 1px solid #294867;
-    background: #0a1c34;
-    color: #b9c8da;
-    cursor: pointer;
-}
-
-.brand.active {
-    background: linear-gradient(135deg,#624cff,#00cfff);
-    color: white;
-    border-color: #4bcfff;
-}
-
-/* ESTILOS */
-.modes {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 10px;
-}
-
-.mode {
-    text-align: center;
-    padding: 20px 8px;
-    border: 1px solid #294867;
-    border-radius: 17px;
-    background: #081a31;
-    cursor: pointer;
-}
-
-.mode span {
-    display: block;
-    font-size: 26px;
-    margin-bottom: 8px;
-}
-
-.mode.active {
-    border-color: #15cfff;
-    background: linear-gradient(145deg,#15245c,#073b59);
-    box-shadow: 0 0 18px rgba(0,190,255,.2);
-}
-
-/* BOTÕES */
 button {
-    border: none;
-    color: white;
-    cursor: pointer;
+  margin-top: 18px;
+  border: none;
+  color: white;
+  background: linear-gradient(90deg, #075bff, #00b7ff);
+  font-weight: bold;
 }
 
-.detect {
-    width: 100%;
-    margin-top: 12px;
-    padding: 16px;
-    border-radius: 15px;
-    background: #102743;
-    border: 1px solid #31516e;
-    font-size: 15px;
+button:active {
+  transform: scale(0.98);
 }
 
-.generate {
-    width: 100%;
-    padding: 20px;
-    border-radius: 18px;
-    font-size: 19px;
-    font-weight: bold;
-    background: linear-gradient(90deg,#604cff,#09cfff);
-    box-shadow: 0 0 25px rgba(0,180,255,.25);
-}
-
-.generate:active {
-    transform: scale(.98);
-}
-
-/* RESULTADO */
 #resultado {
-    display: none;
+  display: none;
+  white-space: pre-line;
+  line-height: 1.8;
 }
 
-.sensi-grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.sensi {
-    padding: 17px;
-    border-radius: 14px;
-    background: #071b33;
-    border: 1px solid #17547e;
-    text-align: center;
-}
-
-.sensi strong {
-    display: block;
-    font-size: 25px;
-    color: #20d4ff;
-    margin-top: 5px;
-}
-
-/* DICAS */
 .dicas {
-    margin-top: 20px;
+  color: #c9eaff;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <h1>SENSIBILIDADE MAX</h1>
+  <p class="subtitulo">Sua configuração para Free Fire</p>
+
+  <div class="card">
+    <label for="celular">Modelo do celular</label>
+    <input id="celular" list="modelos"
+      placeholder="Digite seu celular">
+
+    <datalist id="modelos">
+      <option value="Redmi Note 11">
+      <option value="Redmi Note 12">
+      <option value="Redmi Note 13">
+      <option value="Samsung Galaxy A15">
+      <option value="Samsung Galaxy A25">
+      <option value="iPhone">
+      <option value="Realme">
+      <option value="Moto G">
+    </datalist>
+
+    <label for="estilo">Tipo de sensibilidade</label>
+    <select id="estilo">
+      <option value="alta">Alta</option>
+      <option value="padrao">Padrão</option>
+    </select>
+
+    <label for="botao">Tamanho do botão de tiro</label>
+    <input id="botao" type="number"
+      min="1" max="100" value="50">
+
+    <button onclick="gerarSensi()">GERAR SENSI</button>
+  </div>
+
+  <div class="card" id="resultado">
+    <h2> SUA CONFIGURAÇÃO </h2>
+    <div id="valores"></div>
+    <button onclick="copiarSensi()">COPIAR CONFIGURAÇÃO</button>
+  </div>
+
+  <div class="card dicas">
+    <h2>Dicas</h2>
+    <p>• Teste a sensibilidade no modo treinamento.</p>
+    <p>• Faça pequenos ajustes conforme sua jogabilidade.</p>
+    <p>• Os valores são sugestões, não garantem capa.</p>
+  </div>
+
+</div>
+
+<script>
+function gerarSensi() {
+  const celular = document.getElementById("celular").value.trim();
+  const estilo = document.getElementById("estilo").value;
+  const botao = Number(document.getElementById("botao").value);
+
+  if (!celular) {
+    alert("Digite o modelo do seu celular!");
+    return;
+  }
+
+  if (!Number.isInteger(botao) || botao < 1 || botao > 100) {
+    alert("Digite um tamanho de botão entre 1 e 100.");
+    return;
+  }
+
+  let sensi;
+
+  if (estilo === "alta") {
+    sensi = {
+      "Geral": 200,
+      "Ponto Vermelho": 170,
+      "Mira 2x": 190,
+      "Mira 4x": 170,
+      "AWM": 20,
+      "Olhadinha": 100
+    };
+  } else {
+    sensi = {
+      "Geral": 180,
+      "Ponto Vermelho": 150,
+      "Mira 2x": 160,
+      "Mira 4x": 140,
+      "AWM": 20,
+      "Olhadinha": 100
+    };
+  }
+
+  const texto =
+    "Celular: " + celular + "\n" +
+    "Estilo: " + (estilo === "alta" ? "Alta" : "Padrão") + "\n" +
+    "Botão de tiro: " + botao + "%\n\n" +
+    Object.entries(sensi)
+      .map(([nome, valor]) => nome + ": " + valor)
+      .join("\n");
+
+  document.getElementById("valores").textContent = texto;
+  document.getElementById("resultado").style.display = "block";
+  window.configGerada = texto;
 }
 
-.dicas p {
-    color: #aebbd
+function copiarSensi() {
+  if (window.configGerada) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(window.configGerada)
+        .then(() => alert("Configuração copiada!"))
+        .catch(() => alert("Não foi possível copiar. Selecione o texto manualmente."));
+    } else {
+      alert("Seu navegador não permitiu copiar automaticamente.");
+    }
+  }
+}
+</script>
+</body>
+</html>
