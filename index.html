@@ -1,646 +1,247 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050914">
 <title>Sensibilidade Max</title>
-
 <style>
-* {
-  box-sizing: border-box;
-}
-
-:root {
-  --azul: #087cff;
-  --ciano: #00c8ff;
-  --fundo: #020817;
-  --cartao: rgba(3, 13, 36, .94);
-}
-
-body {
-  margin: 0;
-  padding: 20px 14px 40px;
-  min-height: 100vh;
-  background: var(--fundo);
-  color: #eef6ff;
-  font-family: Arial, sans-serif;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background:
-    linear-gradient(rgba(1, 7, 24, .72),
-                    rgba(1, 7, 24, .94)),
-    url("killua.png") center top / cover no-repeat;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse at top,
-    rgba(0, 100, 255, .13),
-    transparent 65%
-  );
-}
-
-header {
-  text-align: center;
-  margin: 20px 0 28px;
-}
-
-h1 {
-  margin: 0;
-  font-size: clamp(27px, 7vw, 43px);
-  font-weight: 1000;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #43baff;
-  text-shadow:
-    2px 2px 0 #0750a9,
-    -1px -1px 0 #d8f4ff,
-    0 0 12px #007bff,
-    4px 4px 0 #071326;
-}
-
-header p {
-  color: #d2e8ff;
-  margin-top: 14px;
-  font-size: 16px;
-}
-
-.card {
-  max-width: 620px;
-  margin: 0 auto 22px;
-  padding: 22px;
-  background: var(--cartao);
-  border: 1px solid #258aff;
-  border-radius: 22px;
-  box-shadow: 0 0 18px rgba(0, 110, 255, .18);
-}
-
-h2 {
-  color: #83caff;
-  margin-top: 0;
-}
-
-label {
-  display: block;
-  margin: 16px 0 8px;
-  font-size: 16px;
-}
-
-input, select {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #328cff;
-  border-radius: 12px;
-  background: #101e3b;
-  color: white;
-  font-size: 16px;
-  outline: none;
-}
-
-input:focus, select:focus {
-  border-color: var(--ciano);
-  box-shadow: 0 0 8px #008cff55;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 12px;
-  padding: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  background: linear-gradient(100deg, #075cff, #00b9ef);
-  transition: transform .15s;
-}
-
-button:active {
-  transform: scale(.98);
-}
-
-.main-button {
-  width: 100%;
-  margin-top: 22px;
-}
-
-.secondary {
-  background: #132648;
-  border: 1px solid #348fff;
-}
-
-.resultado {
-  display: none;
-  margin-top: 22px;
-  padding: 18px;
-  border: 1px solid #00c8ff;
-  border-radius: 15px;
-  background: #07152b;
-}
-
-.valor {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  margin: 12px 0;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #233d60;
-}
-
-.valor strong {
-  color: #42c8ff;
-  font-size: 19px;
-}
-
-.valor button {
-  padding: 8px 12px;
-  font-size: 13px;
-}
-
-.pequeno {
-  color: #a9c5e8;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.contadores {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.numero {
-  display: block;
-  margin: 10px 0;
-  font-size: 28px;
-  color: #48c9ff;
-  font-weight: bold;
-}
-
-#curtir {
-  width: 100%;
-}
-
-#curtir.curtido {
-  background: linear-gradient(100deg, #bd2468, #f04482);
-}
-
-.grade {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.jogador {
-  padding: 14px 8px;
-  text-align: center;
-  border: 1px solid #236ab5;
-  border-radius: 13px;
-  background: #0a1831;
-}
-
-.jogador strong {
-  display: block;
-  color: #69caff;
-  margin-bottom: 8px;
-}
-
-footer {
-  max-width: 620px;
-  margin: 30px auto 0;
-  text-align: center;
-  color: #b5cce9;
-  line-height: 1.8;
-}
-
-@media (max-width: 360px) {
-  .card { padding: 16px; }
-  .grade { grid-template-columns: 1fr; }
-}
+:root{--blue:#168cff;--cyan:#45e3ff;--bg:#050914;--panel:rgba(5,14,32,.91);--line:#1b73c7;--muted:#b8c9e3}
+*{box-sizing:border-box}
+body{margin:0;padding:18px 12px 36px;background:var(--bg);color:#f4f8ff;font-family:Arial,Helvetica,sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(2,7,19,.63),rgba(2,7,19,.94)),url("killua.jpg") center/cover fixed no-repeat}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at top,rgba(0,123,255,.2),transparent 65%)}
+header{text-align:center;max-width:700px;margin:14px auto 24px}
+h1{margin:0;font-size:clamp(30px,8vw,48px);font-weight:1000;letter-spacing:1.5px;color:#8beaff;-webkit-text-stroke:.5px #d7f7ff;text-shadow:3px 3px 0 #0751a5,5px 5px 0 #020713,0 0 18px #008cff;transform:skew(-3deg)}
+header p{color:#d5e8ff;line-height:1.5}
+.tag{display:inline-block;border:1px solid var(--cyan);color:#a8f5ff;padding:7px 12px;border-radius:999px;font-weight:bold;font-size:12px;letter-spacing:1px;background:#06172acc}
+.card{max-width:650px;margin:0 auto 18px;padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:0 0 22px #006dff22;backdrop-filter:blur(8px)}
+h2{font-size:20px;color:#8bd8ff;margin:0 0 12px}
+h3{font-size:16px;color:#b8e9ff;margin:18px 0 8px}
+label{display:block;margin:14px 0 7px;font-weight:700;font-size:14px}
+input,select,textarea{width:100%;padding:13px 14px;border:1px solid #2869a6;border-radius:11px;background:#0b1930;color:white;font-size:16px;outline:none}
+textarea{resize:vertical;min-height:90px}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 2px #45e3ff22}
+button{border:0;border-radius:12px;padding:13px 15px;color:#fff;font-size:15px;font-weight:800;background:linear-gradient(100deg,#075cff,#00bde8);cursor:pointer}
+button:active{transform:scale(.99)}
+.main{width:100%;margin-top:18px}
+.secondary{background:#102543;border:1px solid #2e80c9}
+.small{font-size:12px;color:var(--muted);line-height:1.6}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.result{display:none;margin-top:18px;padding:16px;border:1px solid var(--cyan);border-radius:14px;background:#06152b}
+.value{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #203854}
+.value strong{font-size:19px;color:var(--cyan)}
+.value:last-child{border-bottom:0}
+.counter-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.counter{padding:14px;border:1px solid #205a92;border-radius:13px;background:#07172d;text-align:center}
+.number{display:block;font-size:28px;font-weight:900;color:var(--cyan);margin-top:7px}
+#likeBtn{width:100%;margin-top:12px}
+.comment{border-top:1px solid #1c3858;padding:12px 0;overflow-wrap:anywhere}
+.comment strong{color:#91dfff}
+.vip{border-color:#8b6dff;background:linear-gradient(135deg,rgba(28,15,62,.94),rgba(4,16,36,.94))}
+.vip h2{color:#c8b9ff}
+footer{text-align:center;max-width:650px;margin:26px auto;color:#d2e3f8;line-height:1.8}
+@media(max-width:390px){.card{padding:16px}.row{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
-
 <header>
+  <span class="tag">100% GRÁTIS • VERSÃO ATUAL</span>
   <h1>SENSIBILIDADE MAX</h1>
-  <p>Sua configuração para Free Fire</p>
+  <p>A Sensibilidade Max está dominando tudo!<br>Monte uma configuração inicial e ajuste do seu jeito.</p>
 </header>
 
 <section class="card">
   <h2>Configurar sua sensi</h2>
+  <label for="game">Versão do jogo</label>
+  <select id="game"><option value="normal">Free Fire</option><option value="max">Free Fire MAX</option></select>
 
-  <label for="jogo">Versão do jogo</label>
-  <select id="jogo">
-    <option value="normal">Free Fire normal</option>
-    <option value="max">Free Fire MAX</option>
-  </select>
+  <label for="phoneSearch">Pesquisar celular</label>
+  <input id="phoneSearch" list="phoneList" placeholder="Digite a marca ou modelo..." autocomplete="off">
+  <datalist id="phoneList"></datalist>
+  <p class="small">A lista reúne modelos conhecidos e pode não incluir todos os aparelhos já lançados. Se não encontrar o seu, digite o nome completo.</p>
 
-  <label for="celular">Modelo do celular</label>
-  <input id="celular" list="modelos"
-         placeholder="Pesquise seu celular..."
-         autocomplete="off">
-
-  <datalist id="modelos">
-    <option value="Redmi Note 11">
-    <option value="Redmi Note 12">
-    <option value="Redmi Note 13">
-    <option value="Redmi Note 14">
-    <option value="Redmi 12">
-    <option value="Redmi 13">
-    <option value="POCO X3 Pro">
-    <option value="POCO X5 Pro">
-    <option value="POCO X6 Pro">
-    <option value="POCO M6 Pro">
-    <option value="Samsung Galaxy A12">
-    <option value="Samsung Galaxy A14">
-    <option value="Samsung Galaxy A15">
-    <option value="Samsung Galaxy A16">
-    <option value="Samsung Galaxy A25">
-    <option value="Samsung Galaxy A35">
-    <option value="Samsung Galaxy A55">
-    <option value="Samsung Galaxy S21">
-    <option value="Samsung Galaxy S22">
-    <option value="Samsung Galaxy S23">
-    <option value="Samsung Galaxy S24">
-    <option value="iPhone 11">
-    <option value="iPhone 12">
-    <option value="iPhone 13">
-    <option value="iPhone 14">
-    <option value="iPhone 15">
-    <option value="iPhone 16">
-    <option value="Motorola Moto G54">
-    <option value="Motorola Moto G84">
-    <option value="Motorola Edge 40">
-    <option value="Motorola Edge 50">
-    <option value="Realme C55">
-    <option value="Realme C67">
-    <option value="Realme 12">
-    <option value="Realme 13">
-    <option value="Infinix Hot 40">
-    <option value="Infinix Hot 50">
-    <option value="Tecno Spark 20">
-    <option value="Tecno Pova 6">
-    <option value="Outro celular">
-  </datalist>
-
-  <label for="tipo">Tipo de sensibilidade</label>
-  <select id="tipo">
-    <option value="alta">Alta — movimentos rápidos</option>
-    <option value="baixa">Baixa — movimentos controlados</option>
-    <option value="equilibrada">Equilibrada</option>
-  </select>
-
-  <label for="dpi">DPI recomendado</label>
-  <select id="dpi">
-    <option value="padrão">Usar DPI atual do celular</option>
-    <option value="400">400 DPI</option>
-    <option value="450">450 DPI</option>
-    <option value="500">500 DPI</option>
-    <option value="550">550 DPI</option>
-    <option value="600">600 DPI</option>
-    <option value="personalizado">Informar meu próprio DPI</option>
-  </select>
-
-  <div id="dpiPersonalizado" hidden>
-    <label for="dpiNumero">Seu DPI</label>
-    <input id="dpiNumero" type="number"
-           min="100" max="1000" placeholder="Ex.: 450">
+  <div class="row">
+    <div>
+      <label for="style">Estilo de sensibilidade</label>
+      <select id="style">
+        <option value="alta">Alta — movimentos rápidos</option>
+        <option value="equilibrada" selected>Equilibrada</option>
+        <option value="baixa">Baixa — movimentos controlados</option>
+      </select>
+    </div>
+    <div>
+      <label for="dpi">DPI</label>
+      <select id="dpi">
+        <option value="atual">Manter o DPI atual</option>
+        <option value="360">360</option><option value="400">400</option>
+        <option value="420">420</option><option value="450">450</option>
+        <option value="480">480</option><option value="500">500</option>
+        <option value="520">520</option><option value="550">550</option>
+        <option value="580">580</option><option value="600">600</option>
+        <option value="custom">Personalizado</option>
+      </select>
+    </div>
+  </div>
+  <div id="customDpiBox" hidden>
+    <label for="customDpi">Digite seu DPI (100–1000)</label>
+    <input id="customDpi" type="number" min="100" max="1000" placeholder="Ex.: 450">
   </div>
 
-  <label for="arma">Escolha a arma</label>
-  <input id="arma" list="armas"
-         placeholder="Pesquise qualquer arma...">
+  <label for="buttonSize">Tamanho do botão de tiro (1–100)</label>
+  <input id="buttonSize" type="number" min="1" max="100" value="50">
 
-  <datalist id="armas">
-    <option value="M1014">
-    <option value="M1887">
-    <option value="MAG-7">
-    <option value="SPAS12">
-    <option value="UMP">
-    <option value="MP40">
-    <option value="MP5">
-    <option value="Thompson">
-    <option value="Vector">
-    <option value="MAC10">
-    <option value="Desert Eagle">
-    <option value="USP">
-    <option value="M500">
-    <option value="G18">
-    <option value="FAMAS">
-    <option value="SCAR">
-    <option value="XM8">
-    <option value="M4A1">
-    <option value="AK">
-    <option value="AN94">
-    <option value="AUG">
-    <option value="Groza">
-    <option value="PARAFAL">
-    <option value="Woodpecker">
-    <option value="SKS">
-    <option value="SVD">
-    <option value="AC80">
-    <option value="M14">
-    <option value="VSS">
-    <option value="AWM">
-    <option value="M82B">
-    <option value="KAR98K">
-    <option value="Dragunov">
-    <option value="P90">
-    <option value="Bizon">
-    <option value="M60">
-    <option value="M249">
-    <option value="Kord">
-    <option value="RGS50">
-    <option value="Mini Uzi">
-    <option value="Trogon">
-    <option value="Kingfisher">
-    <option value="G36">
-    <option value="Heal Pistol">
-    <option value="Todas as armas">
-  </datalist>
-
-  <label for="botao">Tamanho do botão de tiro (1–100)</label>
-  <input id="botao" type="number" min="1" max="100"
-         value="50">
-
-  <button class="main-button" id="gerar">
-    GERAR SENSI
-  </button>
-
-  <div class="resultado" id="resultado">
+  <button id="generate" class="main">GERAR SENSIBILIDADE</button>
+  <div class="result" id="result">
     <h2>Sua configuração</h2>
-    <div id="valores"></div>
-    <p class="pequeno" id="resumo"></p>
-    <button class="main-button" id="copiar">
-      COPIAR TODA A SENSI
-    </button>
+    <div id="values"></div>
+    <p id="summary" class="small"></p>
+    <button id="copy" class="main">COPIAR CONFIGURAÇÃO</button>
   </div>
+  <p class="small">Os valores são sugestões iniciais, não garantem resultados específicos. Teste no treinamento e ajuste aos poucos.</p>
 </section>
 
 <section class="card">
-  <h2>Visitas e curtidas</h2>
-  <div class="contadores">
-    <div>
-      <span class="pequeno">Visitas neste navegador</span>
-      <span class="numero" id="visitas">0</span>
-    </div>
-    <div>
-      <span class="pequeno">Curtidas neste navegador</span>
-      <span class="numero" id="curtidas">0</span>
-    </div>
+  <h2>Comunidade Sensibilidade Max</h2>
+  <div class="counter-grid">
+    <div class="counter"><span class="small">Visualizações neste navegador</span><span class="number" id="views">0</span></div>
+    <div class="counter"><span class="small">Curtidas neste navegador</span><span class="number" id="likes">0</span></div>
   </div>
-  <button id="curtir">♡ CURTIR O APP</button>
-  <p class="pequeno">
-    Os números ficam salvos neste navegador e não representam
-    o total de usuários do site.
-  </p>
+  <button id="likeBtn">♡ CURTIR O APP</button>
+  <p class="small">A contagem local continua salva neste navegador. Para somar curtidas de todos os visitantes, é necessário conectar um banco de dados compartilhado.</p>
 </section>
 
 <section class="card">
-  <h2>Referências do Free Fire</h2>
-  <p class="pequeno">
-    Uma homenagem a jogadores e criadores da comunidade.
-    Os nomes abaixo não indicam que essas pessoas usaram
-    ou recomendaram este aplicativo.
-  </p>
-  <div class="grade">
-    <div class="jogador">
-      <strong>Marechal</strong>
-      <span class="pequeno">Referência da comunidade</span>
-    </div>
-    <div class="jogador">
-      <strong>Nobru</strong>
-      <span class="pequeno">Referência da comunidade</span>
-    </div>
-    <div class="jogador">
-      <strong>Deusa</strong>
-      <span class="pequeno">Referência da comunidade</span>
-    </div>
-    <div class="jogador">
-      <strong>Two9</strong>
-      <span class="pequeno">Referência da comunidade</span>
-    </div>
-  </div>
+  <h2>Comentários</h2>
+  <p class="small">Conte o que achou do aplicativo. Nesta versão, os comentários ficam salvos apenas neste navegador; para todos verem os mesmos comentários, configure um banco de dados compartilhado.</p>
+  <label for="nickname">Seu apelido (opcional)</label>
+  <input id="nickname" maxlength="30" placeholder="Como quer aparecer?">
+  <label for="commentText">Seu comentário</label>
+  <textarea id="commentText" maxlength="400" placeholder="O que você achou do Sensibilidade Max?"></textarea>
+  <button id="sendComment" class="main">PUBLICAR COMENTÁRIO</button>
+  <div id="commentList"></div>
+</section>
+
+<section class="card vip">
+  <h2>Área VIP</h2>
+  <p>A versão atual do Sensibilidade Max é 100% grátis. A área VIP é uma ideia de recurso pago futuro e ainda não está habilitada para compras.</p>
+  <button id="vipBtn" class="secondary">VIP — EM BREVE</button>
+  <p class="small">Não envie pagamentos por esta página. O pagamento VIP só deve ser ativado quando houver um sistema de pagamento seguro e regras claras.</p>
 </section>
 
 <section class="card">
-  <h2>Dicas</h2>
-  <p>• Teste a sensibilidade no modo treinamento.</p>
-  <p>• Faça pequenos ajustes conforme sua jogabilidade.</p>
-  <p>• O DPI é opcional; mantenha o valor atual se preferir.</p>
-  <p>• Os valores gerados são sugestões, não garantem capa.</p>
+  <h2>Dicas rápidas</h2>
+  <p>• Teste a configuração no modo treinamento.</p>
+  <p>• Mude um ajuste de cada vez para perceber a diferença.</p>
+  <p>• O DPI é opcional; pode manter o valor atual.</p>
+  <p>• O melhor ajuste varia conforme o aparelho e a preferência de cada pessoa.</p>
 </section>
 
 <footer>
-  <p>Obrigado por usar o Sensibilidade Max!</p>
-  <p>Feito para a comunidade Free Fire.</p>
+  <p><strong>Obrigado por usar o Sensibilidade Max!</strong></p>
+  <p>Feito com carinho para a comunidade.</p>
+  <p class="small">SENSIBILIDADE MAX — SUA CONFIGURAÇÃO, SEU ESTILO.</p>
 </footer>
 
 <script>
 const $ = id => document.getElementById(id);
 
-const modelos = [
-  "Redmi Note 11", "Redmi Note 12", "Redmi Note 13",
-  "Redmi Note 14", "Redmi 12", "Redmi 13",
-  "POCO X3 Pro", "POCO X5 Pro", "POCO X6 Pro",
-  "POCO M6 Pro", "Samsung Galaxy A12",
-  "Samsung Galaxy A14", "Samsung Galaxy A15",
-  "Samsung Galaxy A16", "Samsung Galaxy A25",
-  "Samsung Galaxy A35", "Samsung Galaxy A55",
-  "Samsung Galaxy S21", "Samsung Galaxy S22",
-  "Samsung Galaxy S23", "Samsung Galaxy S24",
-  "iPhone 11", "iPhone 12", "iPhone 13", "iPhone 14",
-  "iPhone 15", "iPhone 16", "Motorola Moto G54",
-  "Motorola Moto G84", "Motorola Edge 40",
-  "Motorola Edge 50", "Realme C55", "Realme C67",
-  "Realme 12", "Realme 13", "Infinix Hot 40",
-  "Infinix Hot 50", "Tecno Spark 20", "Tecno Pova 6"
+// Catálogo inicial amplo. O campo também aceita modelos digitados manualmente.
+const phoneModels = [
+"Apple iPhone 8","Apple iPhone X","Apple iPhone XR","Apple iPhone XS","Apple iPhone XS Max",
+"iPhone 11","iPhone 11 Pro","iPhone 11 Pro Max","iPhone SE (2020)","iPhone 12 mini","iPhone 12","iPhone 12 Pro","iPhone 12 Pro Max",
+"iPhone 13 mini","iPhone 13","iPhone 13 Pro","iPhone 13 Pro Max","iPhone SE (2022)",
+"iPhone 14","iPhone 14 Plus","iPhone 14 Pro","iPhone 14 Pro Max","iPhone 15","iPhone 15 Plus","iPhone 15 Pro","iPhone 15 Pro Max",
+"iPhone 16","iPhone 16 Plus","iPhone 16 Pro","iPhone 16 Pro Max","iPhone 17","iPhone 17 Pro","iPhone 17 Pro Max",
+"Motorola Moto E13","Motorola Moto E14","Motorola Moto G04","Motorola Moto G05","Motorola Moto G14","Motorola Moto G15",
+"Motorola Moto G24","Motorola Moto G34","Motorola Moto G35","Motorola Moto G42","Motorola Moto G52","Motorola Moto G53",
+"Motorola Moto G54","Motorola Moto G55","Motorola Moto G60","Motorola Moto G62","Motorola Moto G64","Motorola Moto G71",
+"Motorola Moto G72","Motorola Moto G73","Motorola Moto G75","Motorola Moto G82","Motorola Moto G84","Motorola Moto G85",
+"Motorola Edge 30","Motorola Edge 30 Neo","Motorola Edge 30 Fusion","Motorola Edge 30 Ultra","Motorola Edge 40","Motorola Edge 40 Neo",
+"Motorola Edge 50","Motorola Edge 50 Fusion","Motorola Edge 50 Neo","Motorola Edge 50 Pro","Motorola Edge 60","Motorola Edge 60 Fusion",
+"Redmi 9","Redmi 10","Redmi 12","Redmi 13","Redmi 13C","Redmi 14C","Redmi A2","Redmi A3","Redmi A4",
+"Redmi Note 8","Redmi Note 9","Redmi Note 10","Redmi Note 10S","Redmi Note 11","Redmi Note 11S","Redmi Note 11 Pro",
+"Redmi Note 12","Redmi Note 12S","Redmi Note 12 Pro","Redmi Note 13","Redmi Note 13 Pro","Redmi Note 13 Pro+",
+"Redmi Note 14","Redmi Note 14 Pro","Redmi Note 14 Pro+",
+"POCO C40","POCO C65","POCO C75","POCO M3","POCO M4 Pro","POCO M5","POCO M5s","POCO M6","POCO M6 Pro",
+"POCO X3 NFC","POCO X3 Pro","POCO X4 Pro","POCO X5","POCO X5 Pro","POCO X6","POCO X6 Pro","POCO X7","POCO X7 Pro",
+"POCO F3","POCO F4","POCO F5","POCO F5 Pro","POCO F6","POCO F6 Pro","POCO F7",
+"Samsung Galaxy A05","Samsung Galaxy A05s","Samsung Galaxy A06","Samsung Galaxy A12","Samsung Galaxy A13","Samsung Galaxy A14",
+"Samsung Galaxy A15","Samsung Galaxy A16","Samsung Galaxy A23","Samsung Galaxy A24","Samsung Galaxy A25","Samsung Galaxy A32",
+"Samsung Galaxy A33","Samsung Galaxy A34","Samsung Galaxy A35","Samsung Galaxy A52","Samsung Galaxy A53","Samsung Galaxy A54",
+"Samsung Galaxy A55","Samsung Galaxy A56","Samsung Galaxy S21","Samsung Galaxy S22","Samsung Galaxy S23","Samsung Galaxy S24","Samsung Galaxy S25",
+"Realme C53","Realme C55","Realme C61","Realme C63","Realme C67","Realme C75","Realme 9","Realme 10","Realme 11","Realme 12","Realme 13",
+"Infinix Hot 30","Infinix Hot 40","Infinix Hot 50","Infinix Note 30","Infinix Note 40","Infinix GT 10 Pro","Infinix GT 20 Pro",
+"TECNO Spark 10","TECNO Spark 20","TECNO Spark 30","TECNO Pova 5","TECNO Pova 6","TECNO Pova 6 Pro"
 ];
+phoneModels.sort((a,b)=>a.localeCompare(b,"pt-BR"));
+phoneModels.forEach(name=>{const option=document.createElement("option");option.value=name;$("phoneList").appendChild(option);});
 
-$("dpi").addEventListener("change", () => {
-  $("dpiPersonalizado").hidden =
-    $("dpi").value !== "personalizado";
-});
-
-let textoSensi = "";
-
-$("gerar").addEventListener("click", () => {
-  const celular = $("celular").value.trim();
-  const tipo = $("tipo").value;
-  const arma = $("arma").value.trim() || "Todas as armas";
-  const botao = Number($("botao").value);
-  const jogo = $("jogo").value;
-
-  if (!celular) {
-    alert("Digite ou selecione o modelo do celular.");
-    $("celular").focus();
-    return;
-  }
-
-  if (!Number.isFinite(botao) || botao < 1 || botao > 100) {
-    alert("O tamanho do botão deve ser entre 1 e 100.");
-    return;
-  }
-
-  let dpi = $("dpi").value;
-  if (dpi === "personalizado") {
-    dpi = Number($("dpiNumero").value);
-    if (!Number.isFinite(dpi) || dpi < 100 || dpi > 1000) {
-      alert("Digite um DPI entre 100 e 1000.");
-      return;
-    }
-  }
-
-  const perfis = {
-    alta:        [195, 185, 175, 160, 35, 145],
-    baixa:       [150, 130, 120, 105, 25, 100],
-    equilibrada: [180, 165, 150, 135, 30, 120]
+$("dpi").addEventListener("change",()=>{$("customDpiBox").hidden=$("dpi").value!=="custom";});
+let generatedText="";
+$("generate").addEventListener("click",()=>{
+  const phone=$("phoneSearch").value.trim();
+  const button=Number($("buttonSize").value);
+  if(!phone){alert("Digite ou selecione seu celular.");$("phoneSearch").focus();return;}
+  if(!Number.isFinite(button)||button<1||button>100){alert("O tamanho do botão deve ficar entre 1 e 100.");return;}
+  let dpi=$("dpi").value;
+  if(dpi==="custom"){dpi=Number($("customDpi").value);if(!Number.isFinite(dpi)||dpi<100||dpi>1000){alert("Digite um DPI entre 100 e 1000.");return;}}
+  const profiles={
+    alta:[195,185,175,160,35,145],
+    equilibrada:[180,165,150,135,30,120],
+    baixa:[150,130,120,105,25,100]
   };
-
-  const nomes = [
-    "Geral", "Ponto Vermelho", "Mira 2x",
-    "Mira 4x", "Mira AWM", "Olhadinha"
-  ];
-
-  const valores = perfis[tipo];
-  const nomeTipo = {
-    alta: "Alta",
-    baixa: "Baixa",
-    equilibrada: "Equilibrada"
-  }[tipo];
-
-  textoSensi =
-    "SENSIBILIDADE MAX\n" +
-    "Celular: " + celular + "\n" +
-    "Jogo: " + (jogo === "max" ? "Free Fire MAX" : "Free Fire normal") + "\n" +
-    "Perfil: " + nomeTipo + "\n" +
-    "Arma selecionada: " + arma + "\n" +
-    nomes.map((nome, i) => nome + ": " + valores[i]).join("\n") +
-    "\nDPI: " + (dpi === "padrão" ? "Manter o atual" : dpi) +
-    "\nBotão de tiro: " + botao;
-
-  $("valores").innerHTML = "";
-
-  nomes.forEach((nome, i) => {
-    const linha = document.createElement("div");
-    linha.className = "valor";
-
-    const texto = document.createElement("span");
-    texto.textContent = nome;
-
-    const numero = document.createElement("strong");
-    numero.textContent = valores[i];
-
-    linha.append(texto, numero);
-    $("valores").appendChild(linha);
-  });
-
-  const extras = document.createElement("p");
-  extras.className = "pequeno";
-  extras.textContent =
-    "Arma: " + arma +
-    " | DPI: " + (dpi === "padrão" ? "atual" : dpi) +
-    " | Botão: " + botao;
-
-  $("valores").appendChild(extras);
-
-  $("resumo").textContent =
-    "Perfil " + nomeTipo + " para " + celular +
-    ". Valores iniciais sugeridos: ajuste no treinamento.";
-
-  $("resultado").style.display = "block";
-  $("resultado").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  const names=["Geral","Ponto Vermelho","Mira 2x","Mira 4x","Mira AWM","Olhadinha"];
+  const values=profiles[$("style").value];
+  const styleName={alta:"Alta",equilibrada:"Equilibrada",baixa:"Baixa"}[$("style").value];
+  const dpiText=dpi==="atual"?"Manter o DPI atual":String(dpi);
+  generatedText="SENSIBILIDADE MAX\nCelular: "+phone+"\nJogo: "+($("game").value==="max"?"Free Fire MAX":"Free Fire")+
+    "\nPerfil: "+styleName+"\n"+names.map((n,i)=>n+": "+values[i]).join("\n")+
+    "\nDPI: "+dpiText+"\nTamanho do botão: "+button;
+  $("values").replaceChildren();
+  names.forEach((name,i)=>{const row=document.createElement("div");row.className="value";const label=document.createElement("span");label.textContent=name;const value=document.createElement("strong");value.textContent=values[i];row.append(label,value);$("values").appendChild(row);});
+  $("summary").textContent="Sugestão "+styleName.toLowerCase()+" para "+phone+". Use como ponto de partida e ajuste aos poucos.";
+  $("result").style.display="block";$("result").scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+$("copy").addEventListener("click",async()=>{
+ if(!generatedText)return;
+ try{await navigator.clipboard.writeText(generatedText);$("copy").textContent="CONFIGURAÇÃO COPIADA!";}
+ catch{const area=document.createElement("textarea");area.value=generatedText;document.body.appendChild(area);area.select();const ok=document.execCommand("copy");area.remove();$("copy").textContent=ok?"CONFIGURAÇÃO COPIADA!":"Copie o texto manualmente.";}
 });
 
-$("copiar").addEventListener("click", async () => {
-  if (!textoSensi) return;
-
-  try {
-    await navigator.clipboard.writeText(textoSensi);
-    $("copiar").textContent = "SENSI COPIADA!";
-  } catch {
-    const area = document.createElement("textarea");
-    area.value = textoSensi;
-    document.body.appendChild(area);
-    area.select();
-    const sucesso = document.execCommand("copy");
-    area.remove();
-    $("copiar").textContent = sucesso
-      ? "SENSI COPIADA!"
-      : "Selecione e copie o texto manualmente";
-  }
+// Mantém as mesmas chaves de armazenamento local da versão anterior para não zerar os números já salvos neste navegador.
+function readNumber(key){try{return Number(localStorage.getItem(key))||0;}catch{return 0;}}
+function saveNumber(key,value){try{localStorage.setItem(key,String(value));}catch{}}
+const viewKey="sensimax_visitas_local",likeKey="sensimax_curtidas_local",voteKey="sensimax_meu_voto";
+saveNumber(viewKey,readNumber(viewKey)+1);
+$("views").textContent=readNumber(viewKey);
+let liked=false;try{liked=localStorage.getItem(voteKey)==="sim";}catch{}
+function refreshLikes(){$("likes").textContent=readNumber(likeKey);$("likeBtn").textContent=liked?"♥ VOCÊ CURTIU!":"♡ CURTIR O APP";$("likeBtn").style.background=liked?"linear-gradient(100deg,#bd2468,#f04482)":"";}
+$("likeBtn").addEventListener("click",()=>{
+ let total=readNumber(likeKey);
+ if(!liked){total++;liked=true;}else{total=Math.max(0,total-1);liked=false;}
+ saveNumber(likeKey,total);try{localStorage.setItem(voteKey,liked?"sim":"nao");}catch{}refreshLikes();
 });
+refreshLikes();
 
-// Contador local: não é o total global do GitHub Pages.
-function lerNumero(chave) {
-  try {
-    return Number(localStorage.getItem(chave)) || 0;
-  } catch {
-    return 0;
-  }
+// Comentários locais neste navegador. Para comentários/likes compartilhados entre usuários, conecte Firebase/Supabase antes de publicar.
+const commentsKey="sensimax_comments_local";
+function readComments(){try{return JSON.parse(localStorage.getItem(commentsKey)||"[]");}catch{return [];}}
+function renderComments(){
+ const list=$("commentList");list.replaceChildren();const comments=readComments();
+ if(!comments.length){const p=document.createElement("p");p.className="small";p.textContent="Ainda não há comentários neste navegador. Seja o primeiro a comentar!";list.appendChild(p);return;}
+ comments.slice().reverse().forEach(c=>{const div=document.createElement("div");div.className="comment";const name=document.createElement("strong");name.textContent=c.name+" · ";const date=document.createElement("span");date.className="small";date.textContent=c.date;const body=document.createElement("p");body.textContent=c.text;div.append(name,date,body);list.appendChild(div);});
 }
-
-function salvarNumero(chave, valor) {
-  try {
-    localStorage.setItem(chave, String(valor));
-  } catch {}
-}
-
-const chaveVisitas = "sensimax_visitas_local";
-salvarNumero(chaveVisitas, lerNumero(chaveVisitas) + 1);
-$("visitas").textContent = lerNumero(chaveVisitas);
-
-const chaveCurtidas = "sensimax_curtidas_local";
-const chaveMeuVoto = "sensimax_meu_voto";
-let curtido = false;
-
-try {
-  curtido = localStorage.getItem(chaveMeuVoto) === "sim";
-} catch {}
-
-function atualizarCurtidas() {
-  $("curtidas").textContent = lerNumero(chaveCurtidas);
-  $("curtir").textContent = curtido
-    ? "♥ VOCÊ CURTIU!"
-    : "♡ CURTIR O APP";
-  $("curtir").classList.toggle("curtido", curtido);
-}
-
-$("curtir").addEventListener("click", () => {
-  let total = lerNumero(chaveCurtidas);
-
-  if (!curtido) {
-    total++;
-    curtido = true;
-  } else {
-    total = Math.max(0, total - 1);
-    curtido = false;
-  }
-
-  salvarNumero(chaveCurtidas, total);
-
-  try {
-    localStorage.setItem(chaveMeuVoto, curtido ? "sim" : "nao");
-  } catch {}
-
-  atualizarCurtidas();
+$("sendComment").addEventListener("click",()=>{
+ const text=$("commentText").value.trim();if(!text){alert("Escreva um comentário primeiro.");return;}
+ const name=$("nickname").value.trim()||"Visitante";
+ const comments=readComments();comments.push({name,text,date:new Date().toLocaleDateString("pt-BR")});
+ try{localStorage.setItem(commentsKey,JSON.stringify(comments));}catch{alert("Não foi possível salvar neste navegador.");return;}
+ $("commentText").value="";renderComments();
 });
-
-atualizarCurtidas();
+renderComments();
+$("vipBtn").addEventListener("click",()=>alert("A área VIP ainda não está disponível. A versão atual continua 100% grátis."));
 </script>
-
 </body>
   </html>
   
